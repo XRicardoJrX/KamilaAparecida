@@ -3,67 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nome da Profissional | Administração e Varejo Bancário</title>
+    <title>Kamila Aparecida | Gestão Administrativa e Varejo Bancário</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="hero-section">
-        <div class="container">
-            <h1>Nome da Profissional</h1>
-            <h2>Bacharel em Administração</h2>
-            <p class="tag-certificacao">Certificação ANBIMA CPA-10 (Em Preparação)</p>
-        </div>
-    </header>
-
-    <main class="container">
-        <section id="resumo" class="card">
-            <h3>Síntese Executiva</h3>
-            <p>Profissional graduada em Administração com foco no setor financeiro e varejo bancário. Especialista em processos de cadastro, análise de documentação e conformidade operacional. Experiência consolidada em cooperativismo de crédito e rotinas de Recursos Humanos, com foco na eficiência de processos e atendimento ao cooperado/cliente.</p>
-        </section>
-
-        <section id="experiencia" class="card">
-            <h3>Trajetória Profissional</h3>
+    <div class="layout-wrapper">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="avatar-placeholder"><i class="fa-solid fa-user-tie"></i></div>
+                <h2>Kamila Aparecida</h2>
+                <p class="role">Administração & Varejo Bancário</p>
+            </div>
             
-            <div class="job-item">
-                <h4>Analista/Assistente de Cadastro</h4>
-                <h5>Sicoob Coopermec</h5>
-                <ul>
-                    <li>Gestão de carteira de cooperados e processamento de cadastro de pessoas físicas (PF) e jurídicas (PJ).</li>
-                    <li>Análise de documentação para abertura de contas e atualização cadastral, garantindo conformidade com as normativas do Banco Central e políticas de PLD/FT.</li>
-                    <li>Suporte operacional nas plataformas internas da cooperativa.</li>
-                </ul>
+            <nav class="nav-menu">
+                <a href="#sobre"><i class="fa-solid fa-microchip"></i> Resumo Executivo</a>
+                <a href="#metricas"><i class="fa-solid fa-chart-line"></i> Indicadores & Foco</a>
+                <a href="#experiencia"><i class="fa-solid fa-network-wired"></i> Experiência Profissional</a>
+                <a href="#stack"><i class="fa-solid fa-layer-group"></i> Stack Operacional</a>
+            </nav>
+
+            <div class="contact-widget">
+                <p>Status: <span class="status-online">Disponível</span></p>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" title="E-mail"><i class="fa-solid fa-envelope"></i></a>
+                </div>
             </div>
+        </aside>
 
-            <div class="job-item">
-                <h4>Estágio em Recursos Humanos</h4>
-                <h5>Nome da Empresa</h5>
-                <ul>
-                    <li>Execução de rotinas de departamento pessoal e suporte administrativo.</li>
-                    <li>Auxílio no recrutamento, seleção e integração (onboarding) de novos colaboradores.</li>
-                    <li>Organização de arquivos, controle de ponto e gestão de benefícios.</li>
-                </ul>
-            </div>
-        </section>
+        <main class="main-content">
+            
+            <header class="top-header" id="sobre">
+                <span class="badge">sys.init("Gestão Bancária")</span>
+                <h1>Gestão Administrativa & Conformidade Operacional</h1>
+                <p class="hero-text">Profissional graduada em Administração, com foco na estabilidade de processos e eficiência operacional no varejo bancário. Especialista em rotinas de cadastro, análise documental e compliance, garantindo segurança institucional e excelência no atendimento ao cooperado/cliente em instituições financeiras.</p>
+            </header>
 
-        <section id="competencias" class="card">
-            <h3>Hard Skills & Conhecimentos Técnicos</h3>
-            <ul class="skills-grid">
-                <li>Varejo Bancário e Cooperativismo</li>
-                <li>Rotinas de Cadastro e Compliance</li>
-                <li>Análise de Perfil de Crédito</li>
-                <li>Rotinas de Departamento Pessoal (RH)</li>
-                <li>Pacote Office Avançado e Sistemas ERP</li>
-            </ul>
-        </section>
-    </main>
+            <section id="metricas" class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="metric-data">
+                        <h3>Certificação ANBIMA</h3>
+                        <p class="highlight">CPA-10</p>
+                        <span class="sub-text">Em preparação</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="metric-data">
+                        <h3>Setor Primário</h3>
+                        <p class="highlight">Varejo Bancário</p>
+                        <span class="sub-text">Cooperativismo de Crédito</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="metric-data">
+                        <h3>Governança</h3>
+                        <p class="highlight">Compliance & PLD</p>
+                        <span class="sub-text">Prevenção à Lavagem de Dinheiro</span>
+                    </div>
+                </div>
+            </section>
 
-    <footer class="footer-section">
-        <div class="container">
-            <p>Contato: email.profissional@dominio.com | (XX) 9XXXX-XXXX</p>
-            <a href="URL_DO_LINKEDIN" target="_blank" class="btn-linkedin">Acessar Perfil no LinkedIn</a>
-        </div>
-    </footer>
+            <section id="experiencia" class="content-section">
+                <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Trajetória Operacional</h2>
+                
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3>Analista/Assistente de Cadastro</h3>
+                            <h4>Sicoob Coopermec</h4>
+                        </div>
+                        <span class="exp-date">Período Operacional</span>
+                    </div>
+                    <ul class="task-list">
+                        <li><strong>Gestão de Carteira:</strong> Processamento de cadastro e atualização de Pessoas Físicas (PF) e Jurídicas (PJ).</li>
+                        <li><strong>Conformidade Regulatória:</strong> Análise rigorosa de documentação societária e financeira para abertura de contas, mitigando riscos institucionais.</li>
+                        <li><strong>Suporte Operacional:</strong> Operação de sistemas internos da cooperativa e atendimento consultivo ao cooperado.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3>Estágio em Recursos Humanos (RH)</h3>
+                            <h4>Setor Administrativo</h4>
+                        </div>
+                        <span class="exp-date">Período Operacional</span>
+                    </div>
+                    <ul class="task-list">
+                        <li><strong>Rotinas de Departamento Pessoal:</strong> Suporte administrativo estrutural, organização de arquivos e controle de ponto.</li>
+                        <li><strong>Onboarding & Recrutamento:</strong> Auxílio nos processos de atração de talentos e integração de novos colaboradores corporativos.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="stack" class="content-section">
+                <h2 class="section-title"><i class="fa-solid fa-cubes"></i> Ferramentas & Hard Skills</h2>
+                <div class="stack-grid">
+                    <div class="stack-item">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <span>Análise de Crédito</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <span>Compliance / PLD</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <span>Rotinas de DP/RH</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fa-solid fa-laptop-file"></i>
+                        <span>Sistemas ERP/CRM</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fa-solid fa-file-excel"></i>
+                        <span>Office Avançado</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fa-solid fa-handshake"></i>
+                        <span>Atendimento B2C/B2B</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
 
 </body>
 </html>
