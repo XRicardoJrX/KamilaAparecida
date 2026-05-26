@@ -1,0 +1,159 @@
+/* Definição de Variáveis Globais */
+:root {
+    --primary-color: #0d47a1; /* Azul corporativo */
+    --secondary-color: #1976d2;
+    --background-light: #f5f7fa;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --card-bg: #ffffff;
+    --border-radius: 6px;
+}
+
+/* Reset de formatação nativa */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--background-light);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header / Hero */
+.hero-section {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 4px solid var(--secondary-color);
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-section h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.tag-certificacao {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #ffffff;
+    color: var(--primary-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Componentes em Card */
+.card {
+    background-color: var(--card-bg);
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.card h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--background-light);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Experiência Profissional */
+.job-item {
+    margin-bottom: 25px;
+}
+
+.job-item:last-child {
+    margin-bottom: 0;
+}
+
+.job-item h4 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+}
+
+.job-item h5 {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.job-item ul {
+    list-style-type: square;
+    padding-left: 20px;
+    color: var(--text-muted);
+}
+
+.job-item li {
+    margin-bottom: 5px;
+}
+
+/* Grid de Competências */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    list-style: none;
+}
+
+.skills-grid li {
+    background-color: var(--background-light);
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Footer */
+.footer-section {
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 40px;
+    background-color: #2c3e50;
+    color: #ffffff;
+}
+
+.btn-linkedin {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #0077b5;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-linkedin:hover {
+    background-color: #005885;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 600px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .card {
+        padding: 20px;
+    }
+}
