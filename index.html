@@ -344,6 +344,23 @@
     .d4 { transition-delay: 0.40s; }
     .d5 { transition-delay: 0.50s; }
 
+    /* ═══════ EXPERIENCE LIST ITEMS FIX ═══════ */
+    .exp-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+      line-height: 1.6;
+    }
+    .exp-list li i {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
     /* ═══════ PRINT ═══════ */
     @media print {
       body { background: white; color: #111; }
@@ -359,14 +376,14 @@
 ══════════════════════════════════════════════════════════ -->
 <nav style="position:sticky;top:0;z-index:50;background:rgba(7,9,26,0.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);">
   <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-    <span style="font-family:'DM Serif Display',serif;font-size:1rem;background:linear-gradient(135deg,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;">
+    <span style="font-family:'DM Serif Display',serif;font-size:1rem;background:linear-gradient(135deg,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
       Kamila A. C. Silva
     </span>
     <div class="flex items-center gap-1">
       <!-- Links de navegação -->
-      <a href="#sobre"      style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)';this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent'">Sobre</a>
-      <a href="#experiencia" style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)';this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent'">Experiência</a>
-      <a href="#formacao"   style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)';this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent'" class="hidden sm:inline-flex">Formação</a>
+      <a href="#sobre"      style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)'" onmouseout="this.style.color='var(--text-muted)'">Sobre</a>
+      <a href="#experiencia" style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)'" onmouseout="this.style.color='var(--text-muted)'">Experiência</a>
+      <a href="#formacao"   style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)'" onmouseout="this.style.color='var(--text-muted)'">Formação</a>
       <a href="#contato"    class="cta-btn cta-primary" style="padding:7px 16px;font-size:12px;margin-left:6px;">
         <i data-lucide="send" style="width:13px;height:13px;"></i> Contato
       </a>
@@ -457,7 +474,7 @@
             <i data-lucide="linkedin" style="width:15px;height:15px;"></i>
             LinkedIn
           </a>
-          <a href="tel:+5537999999999" class="cta-btn" style="background:rgba(139,92,246,0.1);border:1.5px solid rgba(139,92,246,0.35);color:var(--purple-glow);font-size:14px;font-weight:700;padding:12px 22px;border-radius:12px;text-decoration:none;transition:all 0.25s;" onmouseover="this.style.background='rgba(139,92,246,0.2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(139,92,246,0.1)';this.style.transform='translateY(0)'">
+          <a href="tel:+5537999999999" class="cta-btn" style="background:rgba(139,92,246,0.1);border:1.5px solid rgba(139,92,246,0.35);color:var(--purple-glow);font-size:14px;font-weight:700;padding:12px 22px;">
             <i data-lucide="phone" style="width:15px;height:15px;"></i>
             WhatsApp
           </a>
@@ -630,18 +647,18 @@
                 Papel Atual
               </span>
             </div>
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#a78bfa;flex-shrink:0;margin-top:2px;"></i>
-                Responsável pela aplicação e monitoramento das diretrizes da <strong style="color:#c4b5fd;">Lei Geral de Proteção de Dados (LGPD)</strong> na instituição.
+            <ul class="exp-list" style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+              <li>
+                <i data-lucide="check-circle-2" style="color:#a78bfa;"></i>
+                <span>Responsável pela aplicação e monitoramento das diretrizes da <strong style="color:#c4b5fd;">Lei Geral de Proteção de Dados (LGPD)</strong> na instituição.</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#a78bfa;flex-shrink:0;margin-top:2px;"></i>
-                Garantia do sigilo, tratamento seguro e proteção de dados pessoais de cooperados e colaboradores.
+              <li>
+                <i data-lucide="check-circle-2" style="color:#a78bfa;"></i>
+                <span>Garantia do sigilo, tratamento seguro e proteção de dados pessoais de cooperados e colaboradores.</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#a78bfa;flex-shrink:0;margin-top:2px;"></i>
-                Interface com demais áreas para disseminar a cultura de privacidade e conformidade de dados.
+              <li>
+                <i data-lucide="check-circle-2" style="color:#a78bfa;"></i>
+                <span>Interface com demais áreas para disseminar a cultura de privacidade e conformidade de dados.</span>
               </li>
             </ul>
             <div class="flex flex-wrap gap-2 mt-4">
@@ -669,26 +686,26 @@
                 Cargo Atual
               </span>
             </div>
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Abertura, atualização e análise de cadastros de cooperados (PF e PJ), assegurando conformidade com as normas BACEN e políticas internas.
+            <ul class="exp-list" style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+              <li>
+                <i data-lucide="check-circle-2" style="color:#34d399;"></i>
+                <span>Abertura, atualização e análise de cadastros de cooperados (PF e PJ), assegurando conformidade com as normas BACEN e políticas internas.</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Validação e análise de documentos com base nas diretrizes de <strong style="color:#6ee7b7;">Documentoscopia</strong>, garantindo autenticidade e integridade.
+              <li>
+                <i data-lucide="check-circle-2" style="color:#34d399;"></i>
+                <span>Validação e análise de documentos com base nas diretrizes de <strong style="color:#6ee7b7;">Documentoscopia</strong>, garantindo autenticidade e integridade.</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Aplicação das práticas de <em>Know Your Customer (KYC)</em> e prevenção à lavagem de dinheiro (PLD/COAF).
+              <li>
+                <i data-lucide="check-circle-2" style="color:#34d399;"></i>
+                <span>Aplicação das práticas de <em>Know Your Customer (KYC)</em> e prevenção à lavagem de dinheiro (PLD/COAF).</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Controle e organização de arquivos físicos e digitais, mantendo rastreabilidade e conformidade regulatória.
+              <li>
+                <i data-lucide="check-circle-2" style="color:#34d399;"></i>
+                <span>Controle e organização de arquivos físicos e digitais, mantendo rastreabilidade e conformidade regulatória.</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Atendimento ao cooperado com foco em agilidade, clareza e resolução de pendências cadastrais.
+              <li>
+                <i data-lucide="check-circle-2" style="color:#34d399;"></i>
+                <span>Atendimento ao cooperado com foco em agilidade, clareza e resolução de pendências cadastrais.</span>
               </li>
             </ul>
             <div class="flex flex-wrap gap-2 mt-4">
@@ -717,18 +734,18 @@
                 Experiência Anterior
               </span>
             </div>
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
-                Suporte nos processos de recrutamento, seleção e integração de novos colaboradores.
+            <ul class="exp-list" style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+              <li>
+                <i data-lucide="check-circle-2" style="color:#10b981;"></i>
+                <span>Suporte nos processos de recrutamento, seleção e integração de novos colaboradores.</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
-                Controle e organização de documentação funcional (admissional, contratual e demissional).
+              <li>
+                <i data-lucide="check-circle-2" style="color:#10b981;"></i>
+                <span>Controle e organização de documentação funcional (admissional, contratual e demissional).</span>
               </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
-                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
-                Apoio na gestão de benefícios, controle de ponto e comunicações internas, desenvolvendo visão sistêmica dos processos cooperativos.
+              <li>
+                <i data-lucide="check-circle-2" style="color:#10b981;"></i>
+                <span>Apoio na gestão de benefícios, controle de ponto e comunicações internas, desenvolvendo visão sistêmica dos processos cooperativos.</span>
               </li>
             </ul>
             <div class="flex flex-wrap gap-2 mt-4">
@@ -1002,36 +1019,37 @@
 
     <div class="md:w-56 flex-shrink-0 reveal-left">
       <div class="section-label">05</div>
-      <h2 class="section-title mt-1">Idiomas</h2>
+      <h2 class="section-title mt-1">Idi&shy;omas</h2>
       <div class="section-divider"></div>
     </div>
 
-    <div class="flex-1 reveal d1">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="card p-5">
-          <div class="flex items-center gap-3 mb-4">
-            <span style="font-size:28px;">🇧🇷</span>
+    <div class="flex-1">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- Português -->
+        <div class="reveal card p-6" style="border-color:rgba(59,130,246,0.2);">
+          <div class="flex items-start justify-between mb-4">
             <div>
-              <div style="font-size:15px;font-weight:700;color:#f0f6ff;">Português</div>
-              <div style="font-size:12px;color:#34d399;font-weight:600;">Nativo · Fluente</div>
+              <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">🇧🇷 Português</div>
+              <div style="font-size:13px;color:#60a5fa;font-weight:600;margin-top:2px;">Nativo</div>
             </div>
           </div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="100" style="background:linear-gradient(90deg,#34d399,#6ee7b7);"></div></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="100"></div></div>
         </div>
-        <div class="card p-5">
-          <div class="flex items-center gap-3 mb-4">
-            <span style="font-size:28px;">🇺🇸</span>
+
+        <!-- Inglês -->
+        <div class="reveal d1 card p-6" style="border-color:rgba(16,185,129,0.2);">
+          <div class="flex items-start justify-between mb-4">
             <div>
-              <div style="font-size:15px;font-weight:700;color:#f0f6ff;">Inglês</div>
-              <!-- ↓ Altere o nível real aqui -->
-              <div style="font-size:12px;color:#60a5fa;font-weight:600;">Básico · Em desenvolvimento</div>
+              <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">🇬🇧 Inglês</div>
+              <div style="font-size:13px;color:#34d399;font-weight:600;margin-top:2px;">Intermediário</div>
             </div>
           </div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="30"></div></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="65"></div></div>
         </div>
+
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1039,165 +1057,89 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     CONTATO
+     CONTATO — RODAPÉ
 ══════════════════════════════════════════════════════════ -->
-<section id="contato" class="max-w-5xl mx-auto px-6 py-20">
+<footer id="contato" style="background:var(--bg-secondary);">
+  <div class="max-w-5xl mx-auto px-6 py-16">
 
-  <div class="flex flex-col md:flex-row gap-12 items-start">
+    <div class="flex flex-col md:flex-row gap-12 items-start">
 
-    <div class="md:w-56 flex-shrink-0 reveal-left">
-      <div class="section-label">06</div>
-      <h2 class="section-title mt-1">Contato</h2>
-      <div class="section-divider"></div>
-    </div>
+      <div class="md:w-56 flex-shrink-0 reveal-left">
+        <div class="section-label">06</div>
+        <h2 class="section-title mt-1">Entr&shy;ada<br/>em Contato</h2>
+        <div class="section-divider"></div>
+      </div>
 
-    <div class="flex-1 reveal d1">
+      <div class="flex-1">
 
-      <!-- Banner CTA -->
-      <div class="card p-8 mb-7 relative overflow-hidden" style="background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.08),rgba(16,185,129,0.06));border-color:rgba(59,130,246,0.3);">
-        <!-- Texto decorativo -->
-        <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:80px;opacity:0.07;line-height:1;pointer-events:none;">🤝</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:#f0f6ff;margin-bottom:10px;line-height:1.15;">
-          Vamos conversar? <span style="color:#60a5fa;">✨</span>
+        <div class="reveal card p-8 mb-8 glow-blue" style="border-color:rgba(59,130,246,0.2);text-align:center;">
+          <p style="font-size:1.08rem;color:#cbd5e1;line-height:1.9;font-weight:300;margin-bottom:8px;">
+            Pronta para conversar sobre novas oportunidades e contribuir com minha experiência.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);">Sinta-se à vontade para entrar em contato via qualquer um dos canais abaixo!</p>
         </div>
-        <p style="font-size:14px;color:var(--text-secondary);max-width:420px;line-height:1.75;margin-bottom:20px;">
-          Estou pronta para contribuir com times que valorizam organização, conformidade e resultado.
-          Entre em contato — responderei rapidamente!
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a href="mailto:kamila@email.com" class="cta-btn cta-primary">
-            <i data-lucide="mail" style="width:15px;height:15px;"></i>
-            Enviar e-mail
+
+        <!-- Botões de contato -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal d1">
+          <a href="mailto:kamila@email.com" class="contact-btn" style="justify-content:center;text-align:center;">
+            <i data-lucide="mail" style="width:16px;height:16px;"></i>
+            kamila@email.com
           </a>
-          <a href="tel:+5537999999999" class="cta-btn cta-secondary">
-            <i data-lucide="message-circle" style="width:15px;height:15px;"></i>
+          <a href="https://linkedin.com/in/kamila-silva" target="_blank" class="contact-btn" style="justify-content:center;text-align:center;">
+            <i data-lucide="linkedin" style="width:16px;height:16px;"></i>
+            LinkedIn
+          </a>
+          <a href="tel:+5537999999999" class="contact-btn" style="justify-content:center;text-align:center;">
+            <i data-lucide="phone" style="width:16px;height:16px;"></i>
+            +55 (37) 99999-9999
+          </a>
+          <a href="https://wa.me/5537999999999" target="_blank" class="contact-btn" style="justify-content:center;text-align:center;">
+            <i data-lucide="send" style="width:16px;height:16px;"></i>
             WhatsApp
           </a>
         </div>
-      </div>
-
-      <!-- Todos os links -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-        <a href="mailto:kamila@email.com" class="contact-btn">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="mail" style="width:17px;height:17px;color:#60a5fa;"></i>
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">E-mail</div>
-            <!-- ↓ Substitua pelo e-mail real -->
-            <div style="font-size:13px;color:#cbd5e1;">kamila@email.com</div>
-          </div>
-        </a>
-
-        <a href="tel:+5537999999999" class="contact-btn">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="phone" style="width:17px;height:17px;color:#34d399;"></i>
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Telefone / WhatsApp</div>
-            <!-- ↓ Substitua pelo número real -->
-            <div style="font-size:13px;color:#cbd5e1;">(37) 9 9999-9999</div>
-          </div>
-        </a>
-
-        <a href="https://linkedin.com/in/kamila-silva" target="_blank" class="contact-btn">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(10,102,194,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="linkedin" style="width:17px;height:17px;color:#60a5fa;"></i>
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">LinkedIn</div>
-            <!-- ↓ Substitua pelo link real -->
-            <div style="font-size:13px;color:#cbd5e1;">linkedin.com/in/kamila-silva</div>
-          </div>
-        </a>
-
-        <div class="contact-btn" style="cursor:default;">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="map-pin" style="width:17px;height:17px;color:#a78bfa;"></i>
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Localização</div>
-            <div style="font-size:13px;color:#cbd5e1;">Carmo do Cajuru, MG · Brasil</div>
-          </div>
-        </div>
 
       </div>
-    </div>
-  </div>
-</section>
 
+    </div>
 
-<!-- ══════════════════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════════════════ -->
-<footer style="background:var(--bg-secondary);border-top:1px solid var(--border);">
-  <div class="max-w-5xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div>
-      <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:#f0f6ff;">Kamila Aparecida do Carmo Silva</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Administração · Cadastro · LGPD · CPA-10</div>
+    <!-- Crédito final -->
+    <div class="elegant-sep" style="margin:20px 0;"></div>
+    <div style="text-align:center;padding:20px 0;font-size:12px;color:var(--text-muted);">
+      © 2025 Kamila Aparecida do Carmo Silva. Todos os direitos reservados. | Desenvolvido com <span style="color:var(--emerald-glow);">❤️</span>
     </div>
-    <div style="font-size:12px;color:#334155;text-align:center;">Currículo atualizado em 2025 · Carmo do Cajuru, MG</div>
-    <div class="flex gap-2">
-      <a href="mailto:kamila@email.com" style="width:36px;height:36px;border-radius:9px;background:rgba(59,130,246,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(59,130,246,0.4)';this.style.background='rgba(59,130,246,0.14)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='rgba(59,130,246,0.08)'">
-        <i data-lucide="mail" style="width:14px;height:14px;color:#64748b;"></i>
-      </a>
-      <a href="https://linkedin.com/in/kamila-silva" target="_blank" style="width:36px;height:36px;border-radius:9px;background:rgba(59,130,246,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(59,130,246,0.4)';this.style.background='rgba(59,130,246,0.14)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='rgba(59,130,246,0.08)'">
-        <i data-lucide="linkedin" style="width:14px;height:14px;color:#64748b;"></i>
-      </a>
-    </div>
+
   </div>
 </footer>
 
-
 <!-- ══════════════════════════════════════════════════════════
-     JAVASCRIPT
+     SCRIPTS — Animações e Interatividade
 ══════════════════════════════════════════════════════════ -->
 <script>
-  // Ícones Lucide
-  lucide.createIcons();
+  document.addEventListener('DOMContentLoaded', () => {
+    // ─── Inicializar Lucide Icons ───
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 
-  // ── Scroll Reveal ──────────────────────────────────────
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    // ─── Animar skill bars ao scroll ───
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px'
+    };
 
-  document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObs.observe(el));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('skill-bar-fill')) {
+            const width = entry.target.getAttribute('data-w');
+            entry.target.style.width = width + '%';
+          }
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
 
-  // ── Skill Bars ─────────────────────────────────────────
-  const barObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.skill-bar-fill').forEach((fill, i) => {
-          const w = fill.getAttribute('data-w') || 0;
-          setTimeout(() => { fill.style.width = w + '%'; }, i * 90);
-        });
-        barObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('#competencias, #idiomas').forEach(s => barObs.observe(s));
-
-  // Fallback: animar após 1.5s se seção não encontrada
-  setTimeout(() => {
-    document.querySelectorAll('.skill-bar-fill').forEach((fill, i) => {
-      if (fill.style.width === '' || fill.style.width === '0%') {
-        const w = fill.getAttribute('data-w') || 0;
-        setTimeout(() => { fill.style.width = w + '%'; }, i * 80);
-      }
-    });
-  }, 1500);
-
-  // ── Active nav link highlight ─────────────────────────
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-    navLinks.forEach(a => {
-      if (a.getAttribute('href') === '#' + current) a.style.color = 'var(--royal-glow)';
-      else if (!a.classList.contains('cta-btn')) a.style.color = 'var(--text-muted)';
+    document.querySelectorAll('.skill-bar-fill, .reveal, .reveal-left').forEach(el => {
+      observer.observe(el);
     });
   });
 </script>
