@@ -5,1069 +5,1483 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kamila Aparecida do Carmo Silva — Administradora</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
   <style>
-    /* ═══════ RESET ═══════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-primary:    #ffffff;
-      --bg-secondary:  #f8f8f8;
-      --bg-card:       #f5f5f5;
-      --bg-card-hover: #efefef;
-      --border:        #e0e0e0;
-      --border-light:  #f0f0f0;
-      --text-primary:  #1a1a1a;
-      --text-secondary:#666666;
-      --text-muted:    #999999;
-      --accent:        #1a1a1a;
-      --accent-light:  #333333;
+      --ivory:        #faf8f4;
+      --cream:        #f4f0e8;
+      --parchment:    #ede8dc;
+      --sand:         #d4c9b0;
+      --warm-gray:    #9e9488;
+      --text-dark:    #1c1814;
+      --text-mid:     #4a4540;
+      --text-soft:    #7a7268;
+      --forest:       #2d4a3e;
+      --forest-light: #3d6454;
+      --gold:         #b8966a;
+      --gold-light:   #d4b48a;
+      --gold-pale:    #f0e4cc;
+      --rose:         #c4797a;
+      --rose-pale:    #f0d8d8;
+      --radius-sm:    6px;
+      --radius-md:    12px;
+      --radius-lg:    20px;
+      --radius-xl:    32px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--ivory);
+      color: var(--text-dark);
       overflow-x: hidden;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* ═══════ SCROLLBAR ═══════ */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-secondary); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+    /* ═══ SCROLLBAR ═══ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-    /* ═══════ HEADER NAV ═══════ */
+    /* ═══ FLOATING SHAPES ═══ */
+    .float-bg {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+    }
+    .float-bg-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #b8966a, transparent);
+      top: -100px; right: -100px;
+      animation: floatA 18s ease-in-out infinite;
+    }
+    .float-bg-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #2d4a3e, transparent);
+      bottom: 20%; left: -120px;
+      animation: floatB 22s ease-in-out infinite;
+    }
+    .float-bg-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #c4797a, transparent);
+      top: 45%; right: 5%;
+      animation: floatC 16s ease-in-out infinite;
+    }
+    @keyframes floatA {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(-40px, 60px) scale(1.1); }
+      66% { transform: translate(30px, -30px) scale(0.9); }
+    }
+    @keyframes floatB {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(60px, -80px) scale(1.15); }
+    }
+    @keyframes floatC {
+      0%,100% { transform: translate(0,0); }
+      40% { transform: translate(-50px, 40px); }
+      80% { transform: translate(20px, -20px); }
+    }
+
+    /* ═══ NAV ═══ */
     nav {
-      border-bottom: 1px solid var(--border-light);
-      background: var(--bg-primary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(184,150,106,0.15);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .nav-brand {
-      font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
       font-weight: 600;
-      color: var(--accent);
-      letter-spacing: -0.5px;
+      color: var(--text-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .nav-link {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      color: var(--text-secondary);
-      padding: 8px 16px;
-      border-radius: 6px;
+      color: var(--text-mid);
+      padding: 7px 14px;
+      border-radius: var(--radius-lg);
       text-decoration: none;
       transition: all 0.25s ease;
+      letter-spacing: 0.2px;
     }
-
     .nav-link:hover {
-      color: var(--text-primary);
-      background-color: var(--bg-card);
+      color: var(--text-dark);
+      background: var(--gold-pale);
     }
 
-    /* ═══════ HERO SECTION ═══════ */
-    .hero {
-      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    /* ═══════ PHOTO RING ═══════ */
-    .photo-ring {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 8px solid var(--bg-primary);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-      flex-shrink: 0;
-    }
-
-    .photo-inner {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* ═══════ HERO TITLE ═══════ */
-    .hero-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      color: var(--text-primary);
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-top: 12px;
-    }
-
-    /* ═══════ BADGE ═══════ */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      background: var(--bg-card);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-      width: fit-content;
-    }
-
-    .badge-status {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: #2ecc71;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-    }
-
-    /* ═══════ BUTTONS ═══════ */
+    /* ═══ BUTTONS ═══ */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 11px 22px;
-      border-radius: 6px;
-      font-size: 0.95rem;
+      padding: 11px 24px;
+      border-radius: var(--radius-lg);
+      font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.25s ease;
-      border: 1px solid transparent;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: none;
       letter-spacing: 0.3px;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-light);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-primary);
-      border: 1.5px solid var(--accent);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-1px);
-    }
-
-    .btn-tertiary {
-      background: var(--bg-card);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-    }
-
-    .btn-tertiary:hover {
-      background: var(--bg-card-hover);
-      transform: translateY(-1px);
-    }
-
-    /* ═══════ STATS SECTION ═══════ */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background: var(--border-light);
-      border-radius: 8px;
+      position: relative;
       overflow: hidden;
     }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.15);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .btn:hover::after { opacity: 1; }
 
-    .stat-item {
-      background: var(--bg-primary);
-      padding: 32px 20px;
-      text-align: center;
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: white;
+      box-shadow: 0 4px 20px rgba(184,150,106,0.35);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(184,150,106,0.45);
     }
 
-    .stat-number {
-      font-family: 'Fraunces', serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--text-primary);
+    .btn-forest {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+      color: white;
+      box-shadow: 0 4px 20px rgba(45,74,62,0.3);
+    }
+    .btn-forest:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(45,74,62,0.4);
     }
 
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid var(--sand);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: var(--cream);
+      color: var(--text-mid);
+      border: 1px solid var(--parchment);
+    }
+    .btn-ghost:hover {
+      background: var(--parchment);
+      transform: translateY(-2px);
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .eyebrow-line {
+      width: 32px;
+      height: 2px;
+      background: var(--gold);
+    }
+    .eyebrow-text {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--gold);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--text-dark);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--forest);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-soft);
+      font-weight: 400;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ═══ PHOTO AREA ═══ */
+    .photo-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .photo-frame {
+      position: relative;
+      width: 340px;
+      height: 400px;
+    }
+    .photo-deco-ring {
+      position: absolute;
+      inset: -16px;
+      border-radius: 50% 40% 50% 40%;
+      border: 1.5px solid rgba(184,150,106,0.25);
+      animation: spinSlow 30s linear infinite;
+    }
+    .photo-deco-ring-2 {
+      position: absolute;
+      inset: -32px;
+      border-radius: 40% 50% 40% 50%;
+      border: 1px solid rgba(45,74,62,0.15);
+      animation: spinSlow 45s linear infinite reverse;
+    }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .photo-bg-blob {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold-pale), var(--cream));
+      border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+      z-index: 0;
+      animation: blobMorph 12s ease-in-out infinite;
+    }
+    @keyframes blobMorph {
+      0%,100% { border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%; }
+      33%      { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+      66%      { border-radius: 55% 45% 65% 35% / 40% 60% 45% 55%; }
+    }
+    .photo-circle {
+      position: absolute;
+      inset: 16px;
+      border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+      overflow: hidden;
+      z-index: 1;
+      border: 4px solid rgba(255,255,255,0.8);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+      animation: blobMorph 12s ease-in-out infinite;
+    }
+    .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--parchment), var(--sand));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: var(--gold);
+    }
+    .photo-float-card {
+      position: absolute;
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      border: 1px solid rgba(184,150,106,0.2);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    .photo-float-card.card-a {
+      bottom: -24px;
+      left: -32px;
+      animation-delay: 0s;
+    }
+    .photo-float-card.card-b {
+      top: -20px;
+      right: -24px;
+      animation-delay: 2s;
+      font-size: 0.8rem;
+    }
+    @keyframes floatCard {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .float-icon-wrap {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .float-icon-gold { background: var(--gold-pale); }
+    .float-icon-forest { background: rgba(45,74,62,0.1); }
+
+    /* ═══ PILL/BADGE ═══ */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: var(--radius-lg);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .pill-gold {
+      background: var(--gold-pale);
+      color: var(--gold);
+      border: 1px solid rgba(184,150,106,0.3);
+    }
+    .pill-forest {
+      background: rgba(45,74,62,0.08);
+      color: var(--forest);
+      border: 1px solid rgba(45,74,62,0.15);
+    }
+    .pill-rose {
+      background: var(--rose-pale);
+      color: var(--rose);
+      border: 1px solid rgba(196,121,122,0.25);
+    }
+    .pill-sand {
+      background: var(--cream);
+      color: var(--text-mid);
+      border: 1px solid var(--parchment);
+    }
+    .pill-status {
+      background: var(--ivory);
+      color: var(--text-mid);
+      border: 1px solid var(--parchment);
+    }
+    .pulse-dot {
+      width: 7px; height: 7px;
+      background: #4caf7d;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.7; }
+    }
+
+    /* ═══ STATS BAR ═══ */
+    .stats-bar {
+      position: relative;
+      z-index: 1;
+      background: var(--forest);
+      color: white;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-cell {
+      padding: 40px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
       margin-top: 8px;
     }
 
-    /* ═══════ SECTION ═══════ */
-    section {
-      padding: 80px 24px;
+    /* ═══ SECTIONS ═══ */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 32px;
     }
+    .section-alt { background: var(--cream); }
 
-    .section-header {
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-eyebrow {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 60px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
     }
-
-    .section-label {
-      font-size: 0.85rem;
+    .eyebrow-num {
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--gold);
+    }
+    .eyebrow-dash {
+      width: 24px;
+      height: 1.5px;
+      background: var(--gold);
     }
 
     .section-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--text-primary);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 56px;
     }
 
-    /* ═══════ CARD ═══════ */
-    .card {
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 32px;
+    /* ═══ ABOUT ═══ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--text-dark);
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    .about-body {
+      font-size: 0.97rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+    .about-body p { margin-bottom: 16px; }
+
+    .values-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .value-card {
+      background: white;
+      border: 1px solid var(--parchment);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
       transition: all 0.3s ease;
+      cursor: default;
+    }
+    .value-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 32px rgba(184,150,106,0.12);
+      transform: translateX(6px);
+    }
+    .value-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .vi-gold { background: var(--gold-pale); }
+    .vi-forest { background: rgba(45,74,62,0.1); }
+    .vi-rose { background: var(--rose-pale); }
+    .value-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .value-desc {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.5;
     }
 
-    .card:hover {
-      border-color: var(--accent);
-      background: var(--bg-card);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    /* ═══ EXPERIENCE ═══ */
+    .employer-banner {
+      background: white;
+      border: 1px solid var(--parchment);
+      border-radius: var(--radius-md);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 48px;
+      border-left: 4px solid var(--forest);
+    }
+    .employer-icon {
+      width: 56px; height: 56px;
+      border-radius: 10px;
+      background: rgba(45,74,62,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .employer-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .employer-sub {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-top: 2px;
     }
 
-    /* ═══════ TIMELINE ═══════ */
     .timeline {
       position: relative;
       padding-left: 40px;
     }
-
     .timeline::before {
       content: '';
       position: absolute;
-      left: 8px;
-      top: 32px;
+      left: 10px;
+      top: 24px;
       bottom: 0;
-      width: 1px;
-      background: var(--border);
+      width: 1.5px;
+      background: linear-gradient(to bottom, var(--gold), var(--parchment));
     }
-
-    .timeline-item {
+    .tl-item {
       position: relative;
       margin-bottom: 48px;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -36px;
-      top: 0;
-      width: 18px;
-      height: 18px;
-      background: var(--bg-primary);
-      border: 2px solid var(--accent);
-      border-radius: 50%;
+      background: white;
+      border: 1px solid var(--parchment);
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
       transition: all 0.3s ease;
     }
-
-    .timeline-item:hover .timeline-dot {
-      width: 24px;
-      height: 24px;
-      left: -39px;
-      box-shadow: 0 0 0 6px rgba(26, 26, 26, 0.08);
+    .tl-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(184,150,106,0.1);
+      transform: translateY(-3px);
     }
-
-    /* ═══════ JOB TITLE ═══════ */
-    .job-title {
-      font-size: 1.3rem;
+    .tl-dot {
+      position: absolute;
+      left: -47px;
+      top: 28px;
+      width: 22px; height: 22px;
+      background: white;
+      border: 2.5px solid var(--gold);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 4px rgba(184,150,106,0.1);
+    }
+    .tl-item:hover .tl-dot {
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(184,150,106,0.15);
+    }
+    .tl-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .tl-role {
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 4px;
+      color: var(--text-dark);
     }
-
-    .job-subtitle {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
+    .tl-sub {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      margin-top: 3px;
       font-weight: 500;
     }
-
-    .job-description {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-top: 16px;
-    }
-
-    .job-list {
+    .tl-list {
       list-style: none;
-      margin-top: 16px;
+      margin: 0;
+      padding: 0;
     }
-
-    .job-list li {
+    .tl-list li {
       display: flex;
       gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.65;
       margin-bottom: 10px;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
     }
-
-    .job-list i {
+    .tl-list li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.55rem;
       flex-shrink: 0;
-      margin-top: 2px;
-      color: var(--accent);
+      margin-top: 6px;
+    }
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
     }
 
-    /* ═══════ SKILLS ═══════ */
-    .skills-container {
+    /* ═══ EDUCATION ═══ */
+    .edu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 24px;
     }
-
-    .skill-item {
-      margin-bottom: 24px;
-    }
-
-    .skill-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .skill-bar {
-      height: 4px;
-      background: var(--bg-card);
-      border-radius: 2px;
+    .edu-card {
+      background: white;
+      border: 1px solid var(--parchment);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
       overflow: hidden;
     }
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+    .edu-card:hover::before { transform: scaleX(1); }
+    .edu-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(184,150,106,0.1);
+      transform: translateY(-4px);
+    }
+    .edu-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .edu-degree {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .edu-inst {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+    .edu-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
 
-    .skill-fill {
+    .cert-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      border: 1px solid var(--parchment);
+      border-radius: var(--radius-md);
+      padding: 20px 28px;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+    .cert-row:hover {
+      border-color: var(--gold);
+      box-shadow: 0 6px 24px rgba(184,150,106,0.1);
+      transform: translateX(4px);
+    }
+    .cert-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .cert-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .cert-org {
+      font-size: 0.83rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+    .cert-meta {
+      margin-left: auto;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .cert-hours {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .cert-date {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    /* ═══ SKILLS ═══ */
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .skills-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 28px;
+    }
+    .sk-item { margin-bottom: 22px; }
+    .sk-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .sk-pct { color: var(--warm-gray); font-weight: 500; }
+    .sk-bar {
+      height: 5px;
+      background: var(--parchment);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .sk-fill {
       height: 100%;
-      background: var(--accent);
-      border-radius: 2px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--forest), var(--gold));
       transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-    .skill-pill {
-      display: inline-block;
-      padding: 8px 16px;
-      margin-right: 8px;
-      margin-bottom: 8px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      transition: all 0.25s ease;
+    .soft-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
     }
-
-    .skill-pill:hover {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
+    .soft-pill {
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid var(--parchment);
+      border-radius: var(--radius-lg);
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      font-weight: 500;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+    .soft-pill:hover {
+      background: var(--gold-pale);
+      border-color: var(--gold);
+      color: var(--gold);
       transform: translateY(-2px);
     }
-
-    /* ═══════ DIVIDER ═══════ */
-    .divider {
-      height: 1px;
-      background: var(--border-light);
-      margin: 0;
+    .diferencial-box {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      color: white;
+      margin-top: 8px;
+    }
+    .diferencial-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--gold-light);
+    }
+    .diferencial-body {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
     }
 
-    /* ═══════ ABOUT CARDS ═══════ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    /* ═══ FOOTER ═══ */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--text-dark);
+      color: white;
+      padding: 56px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+    .footer-links {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.25s ease;
+      font-weight: 500;
+    }
+    .footer-link:hover {
+      color: white;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
       margin-top: 32px;
     }
 
-    .about-card {
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-badges, .hero-btns { justify-content: center; }
+      .photo-wrapper { order: -1; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .skills-layout { grid-template-columns: 1fr; gap: 40px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 64px 20px; }
+      .nav-inner { padding: 12px 20px; }
+      .nav-link { display: none; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .photo-frame { width: 260px; height: 310px; }
+      .timeline { padding-left: 28px; }
+    }
+
+    /* ═══ ANIMATIONS ═══ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ═══ DIVIDER ═══ */
+    .ornament {
       text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .about-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .about-icon {
-      width: 44px;
-      height: 44px;
-      margin: 0 auto 12px;
-      padding: 10px;
-      background: var(--bg-secondary);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .about-card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 6px;
-    }
-
-    .about-card-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ═══════ RESPONSIVE ═══════ */
-    @media (max-width: 768px) {
-      section { padding: 60px 20px; }
-      .hero-title { font-size: 2rem; }
-      .skills-container { grid-template-columns: 1fr; }
-      .stat-item { padding: 20px 12px; }
-    }
-
-    /* ═══════ ANIMATIONS ═══════ */
-    .fade-in {
-      animation: fadeIn 0.6s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      color: var(--sand);
+      font-size: 1.2rem;
+      letter-spacing: 8px;
+      padding: 0 32px;
     }
   </style>
 </head>
-
 <body>
 
-<!-- ══════════════════════════════════════════════════════════
-     NAV
-══════════════════════════════════════════════════════════ -->
-<nav class="sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+<!-- Floating BG -->
+<div class="float-bg float-bg-1"></div>
+<div class="float-bg float-bg-2"></div>
+<div class="float-bg float-bg-3"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
     <div class="nav-brand">Kamila Silva</div>
-    <div class="flex items-center gap-2">
+    <div class="nav-links">
       <a href="#sobre" class="nav-link">Sobre</a>
       <a href="#experiencia" class="nav-link">Experiência</a>
       <a href="#formacao" class="nav-link">Formação</a>
-      <a href="mailto:kamilaaparecida@outlook.com" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">
-        <i data-lucide="mail" style="width:16px;height:16px;"></i>
+      <a href="#competencias" class="nav-link">Competências</a>
+      <a href="mailto:kamilaaparecida@outlook.com" class="btn btn-gold" style="padding:8px 18px; font-size:0.85rem; margin-left:8px;">
+        <i data-lucide="mail" style="width:15px;height:15px;"></i>
         Contato
       </a>
     </div>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════════════════════════
-     HERO
-══════════════════════════════════════════════════════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="max-w-6xl mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center md:items-start gap-16">
-    
-    <!-- Foto -->
-    <div class="photo-ring fade-in">
-      <img src="foto.jpg" alt="Kamila Aparecida do Carmo Silva" class="photo-inner">
-    </div>
+  <div class="hero-inner">
 
-    <!-- Texto Hero -->
-    <div class="flex-1">
-      
-      <!-- Status -->
-      <div class="mb-6 fade-in">
-        <div class="badge badge-status">
-          <span class="pulse-dot"></span>
-          Aberta a novas oportunidades
-        </div>
+    <!-- Left: Text -->
+    <div>
+      <div class="hero-eyebrow reveal">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Portfólio Profissional</span>
       </div>
 
-      <!-- Nome -->
-      <h1 class="hero-title fade-in">
-        Kamila Aparecida<br/>do Carmo Silva
+      <div class="hero-badges reveal reveal-delay-1">
+        <span class="pill pill-status"><span class="pulse-dot"></span> Aberta a oportunidades</span>
+      </div>
+
+      <h1 class="hero-title reveal reveal-delay-1">
+        Kamila<br/>
+        <em>Aparecida</em><br/>
+        do Carmo Silva
       </h1>
 
-      <!-- Subtítulo -->
-      <p class="hero-subtitle fade-in">
-        Administradora de Empresas · Cadastro & Conformidade · LGPD
+      <p class="hero-sub reveal reveal-delay-2">
+        Administradora de Empresas · Cadastro & Conformidade · LGPD<br/>
+        <strong>4+ anos</strong> no setor financeiro e cooperativista
       </p>
 
-      <!-- Badges Info -->
-      <div class="flex flex-wrap gap-2 mt-8 mb-8">
-        <div class="badge">
-          <i data-lucide="graduation-cap" style="width:14px;height:14px;"></i>
-          Último Período — Administração
-        </div>
-        <div class="badge">
-          <i data-lucide="award" style="width:14px;height:14px;"></i>
-          CPA-10 (Encaminhado)
-        </div>
-        <div class="badge">
-          <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
+      <div class="hero-badges reveal reveal-delay-3">
+        <span class="pill pill-forest">
+          <i data-lucide="graduation-cap" style="width:13px;height:13px;"></i>
+          Último Período — Adm.
+        </span>
+        <span class="pill pill-gold">
+          <i data-lucide="shield-check" style="width:13px;height:13px;"></i>
           Guardiã da Privacidade
-        </div>
+        </span>
+        <span class="pill pill-sand">
+          <i data-lucide="award" style="width:13px;height:13px;"></i>
+          CPA-10 em Andamento
+        </span>
       </div>
 
-      <!-- CTA Buttons -->
-      <div class="flex flex-wrap gap-3">
-        <a href="mailto:kamilaaparecida@outlook.com" class="btn btn-primary">
-          <i data-lucide="mail" style="width:18px;height:18px;"></i>
+      <div class="hero-btns reveal reveal-delay-4">
+        <a href="mailto:kamilaaparecida@outlook.com" class="btn btn-gold">
+          <i data-lucide="mail" style="width:17px;height:17px;"></i>
           Enviar E-mail
         </a>
-        <a href="https://www.linkedin.com/in/kamila-silva-1b1326294/" target="_blank" class="btn btn-secondary">
-          <i data-lucide="linkedin" style="width:18px;height:18px;"></i>
+        <a href="https://www.linkedin.com/in/kamila-silva-1b1326294/" target="_blank" class="btn btn-forest">
+          <i data-lucide="linkedin" style="width:17px;height:17px;"></i>
           LinkedIn
         </a>
-        <a href="tel:+553798323157" class="btn btn-tertiary">
-          <i data-lucide="phone" style="width:18px;height:18px;"></i>
+        <a href="tel:+553798323157" class="btn btn-outline">
+          <i data-lucide="phone" style="width:17px;height:17px;"></i>
           WhatsApp
         </a>
       </div>
+    </div>
 
+    <!-- Right: Photo -->
+    <div class="photo-wrapper reveal reveal-delay-2">
+      <div class="photo-frame">
+        <div class="photo-deco-ring"></div>
+        <div class="photo-deco-ring-2"></div>
+        <div class="photo-bg-blob"></div>
+        <div class="photo-circle">
+          <img src="foto.jpg" alt="Kamila Aparecida" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>K</div>'">
+        </div>
+
+        <!-- Float card A -->
+        <div class="photo-float-card card-a">
+          <div class="float-icon-wrap float-icon-gold">
+            <i data-lucide="shield-check" style="width:20px;height:20px;color:#b8966a;"></i>
+          </div>
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:#1c1814;">LGPD</div>
+            <div style="font-size:0.72rem;color:#7a7268;font-weight:500;">Guardiã da Privacidade</div>
+          </div>
+        </div>
+
+        <!-- Float card B -->
+        <div class="photo-float-card card-b">
+          <div class="float-icon-wrap float-icon-forest">
+            <i data-lucide="landmark" style="width:18px;height:18px;color:#2d4a3e;"></i>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;font-weight:700;color:#1c1814;">4+ Anos</div>
+            <div style="font-size:0.7rem;color:#7a7268;font-weight:500;">Sicoob Coopermec</div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     STATS
-══════════════════════════════════════════════════════════ -->
-<section style="background: var(--bg-secondary);">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">4+</div>
-        <div class="stat-label">Anos de Experiência</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Áreas de Atuação</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Certificações</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">LGPD</div>
-        <div class="stat-label">Guardiã da Privacidade</div>
-      </div>
+<!-- ═══ STATS ═══ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-cell">
+      <div class="stat-num">4+</div>
+      <div class="stat-lbl">Anos de Experiência</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">3</div>
+      <div class="stat-lbl">Áreas de Atuação</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">4</div>
+      <div class="stat-lbl">Certificações</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" style="font-size:2rem;">LGPD</div>
+      <div class="stat-lbl">Guardiã da Privacidade</div>
     </div>
   </div>
-</section>
+</div>
 
-<hr class="divider">
-
-<!-- ══════════════════════════════════════════════════════════
-     SOBRE MIM
-══════════════════════════════════════════════════════════ -->
-<section id="sobre">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <div class="section-header">
-      <div class="section-label">01 — SOBRE</div>
-      <h2 class="section-title">Quem Sou Eu</h2>
+<!-- ═══ SOBRE ═══ -->
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="section-eyebrow reveal">
+      <span class="eyebrow-num">01</span>
+      <div class="eyebrow-dash"></div>
+      <span class="eyebrow-num">Sobre</span>
     </div>
+    <h2 class="section-title reveal">Quem Sou Eu</h2>
 
-    <!-- Intro destaque -->
-    <div class="card mb-8">
-      <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8;">
-        Sou <strong style="color: var(--text-primary);">estudante do último período de Administração de Empresas</strong>
-        com uma trajetória sólida de mais de <strong>4 anos na área administrativa e operacional</strong>,
-        incluindo experiência no setor financeiro, cooperativismo de crédito e órgãos públicos.
-      </p>
-    </div>
-
-    <!-- Texto principal -->
-    <div style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px;">
-      <p class="mb-4">
-        Atualmente, atuo com foco em <strong style="color: var(--text-primary);">rotinas de cadastro</strong>,
-        sendo responsável pela validação de dados, integridade e conformidade de informações,
-        além da gestão de arquivos e organização de processos operacionais.
-      </p>
-      <p class="mb-4">
-        Tenho papel ativo como <strong style="color: var(--text-primary);">Guardiã da Privacidade</strong>,
-        garantindo a aplicação das diretrizes da <strong>LGPD</strong> e a segurança de informações sensíveis.
-      </p>
-      <p class="mb-4">
-        Minha experiência inclui passagens pela <strong style="color: var(--text-primary);">Gestão de Pessoas</strong>
-        e suporte administrativo geral, proporcionando visão sistêmica de processos e forte capacidade analítica.
-      </p>
-    </div>
-
-    <!-- Valores -->
     <div class="about-grid">
-      <div class="about-card">
-        <div class="about-icon">
-          <i data-lucide="search" style="width:24px;height:24px;color:var(--text-primary);"></i>
+      <div>
+        <p class="about-intro reveal">"Movida pela busca de eficiência operacional, ética e excelência na entrega de resultados."</p>
+        <div class="about-body reveal reveal-delay-1">
+          <p>Sou <strong>estudante do último período de Administração de Empresas</strong> com uma trajetória sólida de mais de <strong>4 anos na área administrativa e operacional</strong>, com forte vivência no setor financeiro, cooperativismo de crédito e em órgãos públicos.</p>
+          <p>Atualmente, atuo com foco em <strong>rotinas de cadastro</strong>, sendo responsável direta pela validação de dados, integridade e conformidade de informações, além do gerenciamento de arquivos e organização de processos operacionais.</p>
+          <p>Tenho papel ativo como <strong>Guardiã da Privacidade</strong>, garantindo a aplicação prática das diretrizes da <strong>LGPD</strong>, o sigilo e a segurança das informações sensíveis.</p>
+          <p>Minha bagagem inclui passagens pela <strong>Gestão de Pessoas</strong> e suporte administrativo geral, o que me proporcionou uma visão sistêmica de processos, forte capacidade analítica e atenção aos detalhes.</p>
         </div>
-        <div class="about-card-title">Precisão</div>
-        <div class="about-card-desc">Atenção total aos detalhes em cada processo</div>
       </div>
-      <div class="about-card">
-        <div class="about-icon">
-          <i data-lucide="shield-check" style="width:24px;height:24px;color:var(--text-primary);"></i>
+
+      <div class="values-stack reveal reveal-delay-2">
+        <div class="value-card">
+          <div class="value-icon vi-gold">
+            <i data-lucide="search" style="width:22px;height:22px;color:#b8966a;"></i>
+          </div>
+          <div>
+            <div class="value-title">Precisão & Detalhe</div>
+            <div class="value-desc">Atenção meticulosa a cada dado, documento e processo</div>
+          </div>
         </div>
-        <div class="about-card-title">Conformidade</div>
-        <div class="about-card-desc">LGPD, KYC, Normas BACEN e regulações</div>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">
-          <i data-lucide="trending-up" style="width:24px;height:24px;color:var(--text-primary);"></i>
+        <div class="value-card">
+          <div class="value-icon vi-forest">
+            <i data-lucide="shield-check" style="width:22px;height:22px;color:#2d4a3e;"></i>
+          </div>
+          <div>
+            <div class="value-title">Conformidade</div>
+            <div class="value-desc">LGPD, KYC, Normas BACEN e regulação cooperativa</div>
+          </div>
         </div>
-        <div class="about-card-title">Crescimento</div>
-        <div class="about-card-desc">Aprendizado contínuo e proatividade</div>
+        <div class="value-card">
+          <div class="value-icon vi-rose">
+            <i data-lucide="trending-up" style="width:22px;height:22px;color:#c4797a;"></i>
+          </div>
+          <div>
+            <div class="value-title">Crescimento Contínuo</div>
+            <div class="value-desc">Proatividade, aprendizado constante e visão sistêmica</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon vi-gold">
+            <i data-lucide="lock" style="width:22px;height:22px;color:#b8966a;"></i>
+          </div>
+          <div>
+            <div class="value-title">Ética & Discrição</div>
+            <div class="value-desc">Sigilo profissional como pilar inegociável da atuação</div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- ══════════════════════════════════════════════════════════
-     EXPERIÊNCIA
-══════════════════════════════════════════════════════════ -->
-<section id="experiencia">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <div class="section-header">
-      <div class="section-label">02 — EXPERIÊNCIA</div>
-      <h2 class="section-title">Trajetória Profissional</h2>
+<!-- ═══ EXPERIÊNCIA ═══ -->
+<section class="section section-alt" id="experiencia">
+  <div class="container">
+    <div class="section-eyebrow reveal">
+      <span class="eyebrow-num">02</span>
+      <div class="eyebrow-dash"></div>
+      <span class="eyebrow-num">Experiência</span>
     </div>
+    <h2 class="section-title reveal">Trajetória Profissional</h2>
 
-    <!-- Empresa Sicoob -->
-    <div class="card mb-8" style="padding: 24px 32px;">
-      <div class="flex items-center gap-4 mb-6">
-        <div style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border-radius: 8px; flex-shrink: 0;">
-          <i data-lucide="landmark" style="width:28px;height:28px;color:var(--text-primary);"></i>
-        </div>
-        <div>
-          <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary);">Sicoob Coopermec</div>
-          <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 2px;">Cooperativa de Crédito · Minas Gerais · 4+ anos</div>
-        </div>
+    <div class="employer-banner reveal">
+      <div class="employer-icon">
+        <i data-lucide="landmark" style="width:28px;height:28px;color:#2d4a3e;"></i>
       </div>
+      <div>
+        <div class="employer-name">Sicoob Coopermec</div>
+        <div class="employer-sub">Cooperativa de Crédito · Minas Gerais · 4+ anos de trajetória</div>
+      </div>
+      <span class="pill pill-forest" style="margin-left:auto;">Atual</span>
     </div>
 
-    <!-- Timeline -->
     <div class="timeline">
 
-      <!-- Cargo 1: Guardiã da Privacidade -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="job-title">Guardiã da Privacidade</div>
-        <div class="job-subtitle">Compliance & LGPD · Papel Atual</div>
-        <ul class="job-list">
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Responsável pela aplicação e monitoramento das diretrizes da <strong>LGPD</strong> na instituição</span>
-          </li>
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Garantia do sigilo e proteção de dados pessoais de cooperados e colaboradores</span>
-          </li>
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Interface com demais áreas para disseminar cultura de privacidade e conformidade</span>
-          </li>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">Guardiã da Privacidade</div>
+            <div class="tl-sub">Compliance & LGPD · Papel Atual</div>
+          </div>
+          <span class="pill pill-forest">Atual</span>
+        </div>
+        <ul class="tl-list">
+          <li>Responsável pela aplicação e monitoramento das diretrizes da <strong>LGPD</strong> na instituição</li>
+          <li>Garantia do sigilo e proteção de dados pessoais de cooperados e colaboradores</li>
+          <li>Interface com demais áreas para disseminar cultura de privacidade e conformidade</li>
         </ul>
-        <div style="margin-top: 12px;">
-          <span class="skill-pill">LGPD</span>
-          <span class="skill-pill">Proteção de Dados</span>
-          <span class="skill-pill">Compliance</span>
+        <div class="tl-tags">
+          <span class="pill pill-forest">LGPD</span>
+          <span class="pill pill-sand">Proteção de Dados</span>
+          <span class="pill pill-sand">Compliance</span>
         </div>
       </div>
 
-      <!-- Cargo 2: Analista de Cadastro -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="job-title">Analista de Cadastro</div>
-        <div class="job-subtitle">Setor de Cadastro · Conformidade Cadastral</div>
-        <ul class="job-list">
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Abertura, atualização e análise de cadastros de cooperados (PF e PJ)</span>
-          </li>
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Validação de documentos com base em <strong>Documentoscopia</strong></span>
-          </li>
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Aplicação de práticas KYC e prevenção à lavagem de dinheiro (PLD/COAF)</span>
-          </li>
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Controle e organização de arquivos físicos e digitais com rastreabilidade</span>
-          </li>
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">Analista de Cadastro</div>
+            <div class="tl-sub">Setor de Cadastro · Conformidade Cadastral</div>
+          </div>
+        </div>
+        <ul class="tl-list">
+          <li>Abertura, atualização e análise de cadastros de cooperados (PF e PJ)</li>
+          <li>Validação de documentos com base em <strong>Documentoscopia</strong></li>
+          <li>Aplicação de práticas KYC e prevenção à lavagem de dinheiro (PLD/COAF)</li>
+          <li>Controle e organização de arquivos físicos e digitais com rastreabilidade</li>
         </ul>
-        <div style="margin-top: 12px;">
-          <span class="skill-pill">KYC / PLD</span>
-          <span class="skill-pill">Documentoscopia</span>
-          <span class="skill-pill">Normas BACEN</span>
-          <span class="skill-pill">Cadastro PF/PJ</span>
+        <div class="tl-tags">
+          <span class="pill pill-gold">KYC / PLD</span>
+          <span class="pill pill-gold">Documentoscopia</span>
+          <span class="pill pill-sand">Normas BACEN</span>
+          <span class="pill pill-sand">Cadastro PF/PJ</span>
         </div>
       </div>
 
-      <!-- Cargo 3: RH -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="job-title">Assistente de Recursos Humanos</div>
-        <div class="job-subtitle">Setor de RH · Gestão de Pessoas</div>
-        <ul class="job-list">
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Suporte em recrutamento, seleção e integração de colaboradores</span>
-          </li>
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Controle de documentação funcional (admissional e demissional)</span>
-          </li>
-          <li>
-            <i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>
-            <span>Apoio na gestão de benefícios e comunicações internas</span>
-          </li>
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">Assistente de Recursos Humanos</div>
+            <div class="tl-sub">Setor de RH · Gestão de Pessoas</div>
+          </div>
+        </div>
+        <ul class="tl-list">
+          <li>Suporte em recrutamento, seleção e integração de colaboradores</li>
+          <li>Controle de documentação funcional (admissional e demissional)</li>
+          <li>Apoio na gestão de benefícios e comunicações internas</li>
         </ul>
-        <div style="margin-top: 12px;">
-          <span class="skill-pill">Recrutamento</span>
-          <span class="skill-pill">Gestão de Pessoas</span>
-          <span class="skill-pill">Benefícios</span>
+        <div class="tl-tags">
+          <span class="pill pill-sand">Recrutamento</span>
+          <span class="pill pill-sand">Gestão de Pessoas</span>
+          <span class="pill pill-sand">Benefícios</span>
         </div>
       </div>
 
-      <!-- Cargo 4: Órgão Público -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="job-title">Suporte Administrativo</div>
-        <div class="job-subtitle">Órgão Público · Administração Geral</div>
-        <p class="job-description">
-          Atuação em rotinas administrativas no setor público, desenvolvendo habilidades em gestão de documentos,
-          atendimento ao público, controle de processos e organização de arquivos.
-        </p>
-        <div style="margin-top: 12px;">
-          <span class="skill-pill">Administração Pública</span>
-          <span class="skill-pill">Gestão Documental</span>
-          <span class="skill-pill">Atendimento ao Público</span>
+      <div class="tl-item reveal reveal-delay-3">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">Suporte Administrativo</div>
+            <div class="tl-sub">Órgão Público · Administração Geral</div>
+          </div>
+        </div>
+        <ul class="tl-list">
+          <li>Atuação em rotinas administrativas no setor público</li>
+          <li>Gestão de documentos, atendimento ao público e controle de processos</li>
+          <li>Organização de arquivos e apoio operacional geral</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="pill pill-sand">Administração Pública</span>
+          <span class="pill pill-sand">Gestão Documental</span>
+          <span class="pill pill-sand">Atendimento ao Público</span>
         </div>
       </div>
 
     </div>
-
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- ══════════════════════════════════════════════════════════
-     FORMAÇÃO
-══════════════════════════════════════════════════════════ -->
-<section id="formacao">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <div class="section-header">
-      <div class="section-label">03 — FORMAÇÃO</div>
-      <h2 class="section-title">Educação & Certificações</h2>
+<!-- ═══ FORMAÇÃO ═══ -->
+<section class="section" id="formacao">
+  <div class="container">
+    <div class="section-eyebrow reveal">
+      <span class="eyebrow-num">03</span>
+      <div class="eyebrow-dash"></div>
+      <span class="eyebrow-num">Formação</span>
     </div>
+    <h2 class="section-title reveal">Educação & Certificações</h2>
 
-    <!-- Graduação -->
-    <div class="card mb-6">
-      <div class="flex items-start gap-4">
-        <div style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border-radius: 8px; flex-shrink: 0;">
-          <i data-lucide="graduation-cap" style="width:28px;height:28px;color:var(--text-primary);"></i>
+    <div class="edu-grid" style="margin-bottom: 40px;">
+      <div class="edu-card reveal">
+        <div class="edu-icon" style="background: rgba(45,74,62,0.08);">
+          <i data-lucide="graduation-cap" style="width:26px;height:26px;color:#2d4a3e;"></i>
         </div>
-        <div class="flex-1">
-          <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Bacharelado em Administração de Empresas</div>
-          <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">UEMG · Cláudio, MG</div>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 12px; line-height: 1.6;">
-            Formação em gestão empresarial, processos organizacionais, finanças, compliance e liderança.
-          </p>
-          <div style="margin-top: 12px;">
-            <span class="badge">🎓 Último Período</span>
-          </div>
+        <div class="edu-degree">Bacharelado em Administração de Empresas</div>
+        <div class="edu-inst">UEMG · Cláudio, MG</div>
+        <div class="edu-desc">Formação em gestão empresarial, processos organizacionais, finanças, compliance e liderança.</div>
+        <div style="margin-top:16px;">
+          <span class="pill pill-gold">🎓 Último Período</span>
+        </div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-icon" style="background: var(--gold-pale);">
+          <i data-lucide="award" style="width:26px;height:26px;color:#b8966a;"></i>
+        </div>
+        <div class="edu-degree">Certificação CPA-10</div>
+        <div class="edu-inst">ANBIMA — Mercado Financeiro e de Capitais</div>
+        <div class="edu-desc">Certificação para distribuição de produtos de investimento. Abrange regulação, ética, produtos financeiros e compliance.</div>
+        <div style="margin-top:16px;">
+          <span class="pill pill-rose">⏳ Em andamento</span>
         </div>
       </div>
     </div>
 
-    <!-- CPA-10 -->
-    <div class="card mb-6">
-      <div class="flex items-start gap-4">
-        <div style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border-radius: 8px; flex-shrink: 0;">
-          <i data-lucide="award" style="width:28px;height:28px;color:var(--text-primary);"></i>
-        </div>
-        <div class="flex-1">
-          <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">
-            Certificação CPA-10
-            <span class="badge" style="margin-left: 12px;">⏳ Em andamento</span>
-          </div>
-          <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">ANBIMA — Mercado Financeiro e de Capitais</div>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 12px; line-height: 1.6;">
-            Certificação para distribuição de produtos de investimento. Abrange regulação, ética, produtos financeiros e compliance.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Divider -->
-    <div style="margin: 32px 0; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); text-align: center;">
+    <div style="margin: 40px 0 24px; font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-soft); text-align:center;">
       Cursos & Certificados Complementares
     </div>
 
-    <!-- Cert 1 -->
-    <div class="card mb-6" style="padding: 20px 32px;">
-      <div class="flex items-start justify-between gap-4">
-        <div style="display: flex; gap: 12px;">
-          <div style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border-radius: 6px; flex-shrink: 0;">
-            <i data-lucide="users-2" style="width:20px;height:20px;color:var(--text-primary);"></i>
-          </div>
-          <div>
-            <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Encontro Estadual de Jovens Cooperativistas de MG</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px;">SESCOOP/MG — Sistema Ocemg</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">07 a 09/08/2025 · 16h · Belo Horizonte, MG</div>
-          </div>
-        </div>
-        <span class="badge" style="white-space: nowrap; flex-shrink: 0;">16h</span>
+    <div class="cert-row reveal">
+      <div class="cert-icon" style="background: rgba(45,74,62,0.1);">
+        <i data-lucide="users-2" style="width:22px;height:22px;color:#2d4a3e;"></i>
+      </div>
+      <div>
+        <div class="cert-name">Encontro Estadual de Jovens Cooperativistas de MG</div>
+        <div class="cert-org">SESCOOP/MG — Sistema Ocemg · Belo Horizonte, MG</div>
+      </div>
+      <div class="cert-meta">
+        <div class="cert-hours">16h</div>
+        <div class="cert-date">07–09/08/2025</div>
       </div>
     </div>
 
-    <!-- Cert 2 -->
-    <div class="card" style="padding: 20px 32px;">
-      <div class="flex items-start justify-between gap-4">
-        <div style="display: flex; gap: 12px;">
-          <div style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border-radius: 6px; flex-shrink: 0;">
-            <i data-lucide="file-scan" style="width:20px;height:20px;color:var(--text-primary);"></i>
-          </div>
-          <div>
-            <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Curso de Documentoscopia</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px;">SESCOOP/SP — Somos Coop</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">17 a 18/07/2024 · 8h · São Paulo, SP</div>
-          </div>
-        </div>
-        <span class="badge" style="white-space: nowrap; flex-shrink: 0;">8h</span>
+    <div class="cert-row reveal reveal-delay-1">
+      <div class="cert-icon" style="background: var(--gold-pale);">
+        <i data-lucide="file-scan" style="width:22px;height:22px;color:#b8966a;"></i>
+      </div>
+      <div>
+        <div class="cert-name">Curso de Documentoscopia</div>
+        <div class="cert-org">SESCOOP/SP — Somos Coop · São Paulo, SP</div>
+      </div>
+      <div class="cert-meta">
+        <div class="cert-hours">8h</div>
+        <div class="cert-date">17–18/07/2024</div>
       </div>
     </div>
 
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- ══════════════════════════════════════════════════════════
-     COMPETÊNCIAS
-══════════════════════════════════════════════════════════ -->
-<section>
-  <div class="max-w-6xl mx-auto px-6">
-
-    <div class="section-header">
-      <div class="section-label">04 — COMPETÊNCIAS</div>
-      <h2 class="section-title">Habilidades & Conhecimentos</h2>
+<!-- ═══ COMPETÊNCIAS ═══ -->
+<section class="section section-alt" id="competencias">
+  <div class="container">
+    <div class="section-eyebrow reveal">
+      <span class="eyebrow-num">04</span>
+      <div class="eyebrow-dash"></div>
+      <span class="eyebrow-num">Competências</span>
     </div>
+    <h2 class="section-title reveal">Habilidades & Conhecimentos</h2>
 
-    <div class="skills-container">
+    <div class="skills-layout">
+      <div class="reveal">
+        <div class="skills-title">Hard Skills</div>
 
-      <!-- Hard Skills -->
-      <div>
-        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Hard Skills</h3>
-        
-        <div class="skill-item">
-          <div class="skill-label">
-            <span>Gestão de Cadastros (PF/PJ)</span>
-            <span style="color: var(--text-muted);">92%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width: 92%;"></div></div>
+        <div class="sk-item">
+          <div class="sk-row"><span>Gestão de Cadastros (PF/PJ)</span><span class="sk-pct">92%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:0" data-width="92%"></div></div>
         </div>
-
-        <div class="skill-item">
-          <div class="skill-label">
-            <span>LGPD & Proteção de Dados</span>
-            <span style="color: var(--text-muted);">88%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
+        <div class="sk-item">
+          <div class="sk-row"><span>LGPD & Proteção de Dados</span><span class="sk-pct">88%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:0" data-width="88%"></div></div>
         </div>
-
-        <div class="skill-item">
-          <div class="skill-label">
-            <span>Compliance & KYC / PLD</span>
-            <span style="color: var(--text-muted);">87%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width: 87%;"></div></div>
+        <div class="sk-item">
+          <div class="sk-row"><span>Compliance & KYC / PLD</span><span class="sk-pct">87%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:0" data-width="87%"></div></div>
         </div>
-
-        <div class="skill-item">
-          <div class="skill-label">
-            <span>Documentoscopia</span>
-            <span style="color: var(--text-muted);">82%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width: 82%;"></div></div>
+        <div class="sk-item">
+          <div class="sk-row"><span>Documentoscopia</span><span class="sk-pct">82%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:0" data-width="82%"></div></div>
         </div>
-
-        <div class="skill-item">
-          <div class="skill-label">
-            <span>Gestão de Pessoas (RH)</span>
-            <span style="color: var(--text-muted);">80%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+        <div class="sk-item">
+          <div class="sk-row"><span>Gestão de Pessoas (RH)</span><span class="sk-pct">80%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:0" data-width="80%"></div></div>
         </div>
-
-        <div class="skill-item">
-          <div class="skill-label">
-            <span>Pacote Office & ERP</span>
-            <span style="color: var(--text-muted);">80%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+        <div class="sk-item">
+          <div class="sk-row"><span>Pacote Office & ERP</span><span class="sk-pct">80%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:0" data-width="80%"></div></div>
         </div>
-
-        <div class="skill-item">
-          <div class="skill-label">
-            <span>Normas BACEN & Cooperativismo</span>
-            <span style="color: var(--text-muted);">78%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width: 78%;"></div></div>
+        <div class="sk-item">
+          <div class="sk-row"><span>Normas BACEN & Cooperativismo</span><span class="sk-pct">78%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:0" data-width="78%"></div></div>
         </div>
-
       </div>
 
-      <!-- Soft Skills -->
-      <div>
-        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Soft Skills</h3>
-        
-        <div style="margin-bottom: 24px;">
-          <span class="skill-pill">Atenção a Detalhes</span>
-          <span class="skill-pill">Organização</span>
-          <span class="skill-pill">Trabalho em Equipe</span>
-          <span class="skill-pill">Proatividade</span>
-          <span class="skill-pill">Ética Profissional</span>
-          <span class="skill-pill">Visão Sistêmica</span>
-          <span class="skill-pill">Pensamento Analítico</span>
-          <span class="skill-pill">Gestão do Tempo</span>
-          <span class="skill-pill">Comunicação Clara</span>
-          <span class="skill-pill">Discrição & Sigilo</span>
-          <span class="skill-pill">Foco em Resultados</span>
-          <span class="skill-pill">Adaptabilidade</span>
+      <div class="reveal reveal-delay-2">
+        <div class="skills-title">Soft Skills</div>
+        <div class="soft-pills">
+          <span class="soft-pill">Atenção a Detalhes</span>
+          <span class="soft-pill">Organização</span>
+          <span class="soft-pill">Trabalho em Equipe</span>
+          <span class="soft-pill">Proatividade</span>
+          <span class="soft-pill">Ética Profissional</span>
+          <span class="soft-pill">Visão Sistêmica</span>
+          <span class="soft-pill">Pensamento Analítico</span>
+          <span class="soft-pill">Gestão do Tempo</span>
+          <span class="soft-pill">Comunicação Clara</span>
+          <span class="soft-pill">Discrição & Sigilo</span>
+          <span class="soft-pill">Foco em Resultados</span>
+          <span class="soft-pill">Adaptabilidade</span>
         </div>
 
-        <!-- Diferencial -->
-        <div class="card" style="background: var(--bg-secondary); border: 1px solid var(--border);">
-          <div style="display: flex; gap: 12px;">
-            <i data-lucide="zap" style="width:20px;height:20px;color:var(--accent);flex-shrink:0;margin-top:2px;"></i>
-            <div>
-              <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">✨ Diferencial Estratégico</div>
-              <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
-                Perfil multifuncional que combina conformidade cadastral, LGPD, documentoscopia e gestão de pessoas — 
-                entregando visão integrada em toda a cadeia de processos financeiros e cooperativos.
-              </p>
-            </div>
+        <div class="diferencial-box">
+          <div class="diferencial-title">✦ Diferencial Estratégico</div>
+          <div class="diferencial-body">
+            Perfil multifuncional que combina conformidade cadastral, LGPD, documentoscopia e gestão de pessoas —
+            entregando visão integrada em toda a cadeia de processos financeiros e cooperativos.
           </div>
         </div>
-
       </div>
-
     </div>
 
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════════════════ -->
-<footer style="background: var(--bg-secondary); padding: 40px 24px; text-align: center; border-top: 1px solid var(--border-light);">
-  <div class="max-w-6xl mx-auto">
-    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-      © 2025 Kamila Aparecida. Todos os direitos reservados.
-    </p>
-    <div style="display: flex; justify-content: center; gap: 16px;">
-      <a href="https://www.linkedin.com/in/kamila-silva-1b1326294/" target="_blank" style="color: var(--text-secondary); text-decoration: none; transition: all 0.25s; font-weight: 500;">
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Kamila Silva</div>
+      <div style="font-size:0.85rem; color:rgba(255,255,255,0.4); margin-top:4px;">Administradora · Cadastro & Conformidade</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/kamila-silva-1b1326294/" target="_blank" class="footer-link">
+        <i data-lucide="linkedin" style="width:15px;height:15px;"></i>
         LinkedIn
       </a>
-      <a href="mailto:kamilaaparecida@outlook.com" style="color: var(--text-secondary); text-decoration: none; transition: all 0.25s; font-weight: 500;">
+      <a href="mailto:kamilaaparecida@outlook.com" class="footer-link">
+        <i data-lucide="mail" style="width:15px;height:15px;"></i>
         E-mail
       </a>
-      <a href="tel:+553798323157" style="color: var(--text-secondary); text-decoration: none; transition: all 0.25s; font-weight: 500;">
+      <a href="tel:+553798323157" class="footer-link">
+        <i data-lucide="phone" style="width:15px;height:15px;"></i>
         WhatsApp
       </a>
     </div>
   </div>
+  <div class="footer-copy">© 2025 Kamila Aparecida do Carmo Silva. Todos os direitos reservados.</div>
 </footer>
 
-<!-- Scripts -->
 <script>
   lucide.createIcons();
 
-  // Intersection Observer para animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  };
-
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-        observer.unobserve(entry.target);
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
 
-  // Skill bars animation
-  const skillBars = document.querySelectorAll('.skill-fill');
+  // Skill bars
+  const fills = document.querySelectorAll('.sk-fill');
   const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const width = entry.target.style.width;
-        entry.target.style.width = '0';
+    entries.forEach(e => {
+      if (e.isIntersecting) {
         setTimeout(() => {
-          entry.target.style.width = width;
-        }, 100);
-        skillObserver.unobserve(entry.target);
+          e.target.style.width = e.target.dataset.width;
+        }, 200);
+        skillObserver.unobserve(e.target);
       }
     });
-  }, observerOptions);
-
-  skillBars.forEach(bar => skillObserver.observe(bar));
+  }, { threshold: 0.3 });
+  fills.forEach(f => skillObserver.observe(f));
 </script>
 
 </body>
