@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamila Aparecida do Carmo Silva — Administradora</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royal:   { DEFAULT: '#1a56db', light: '#3b82f6', glow: '#60a5fa' },
+            emerald: { DEFAULT: '#059669', light: '#10b981', glow: '#34d399' },
+          },
+          fontFamily: {
+            display: ['"DM Serif Display"', 'Georgia', 'serif'],
+            body:    ['"Outfit"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ═══════ RESET ═══════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary:    #07091a;
+      --bg-secondary:  #0b0f24;
+      --bg-card:       #0f1628;
+      --bg-card-hover: #131c36;
+      --border:        rgba(99,179,237,0.10);
+      --border-accent: rgba(59,130,246,0.45);
+      --royal:         #3b82f6;
+      --royal-glow:    #60a5fa;
+      --emerald:       #10b981;
+      --emerald-glow:  #34d399;
+      --purple:        #8b5cf6;
+      --purple-glow:   #a78bfa;
+      --amber:         #f59e0b;
+      --amber-glow:    #fbbf24;
+      --text-primary:  #f0f6ff;
+      --text-secondary:#94a3b8;
+      --text-muted:    #475569;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ═══════ SCROLLBAR ═══════ */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--royal), var(--emerald)); border-radius: 2px; }
+
+    /* ═══════ BG GRID ═══════ */
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(59,130,246,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    /* ═══════ GLOWS ═══════ */
+    .glow-blue   { box-shadow: 0 0 40px rgba(59,130,246,0.18), 0 0 80px rgba(59,130,246,0.07); }
+    .glow-green  { box-shadow: 0 0 40px rgba(16,185,129,0.15), 0 0 80px rgba(16,185,129,0.06); }
+    .glow-purple { box-shadow: 0 0 40px rgba(139,92,246,0.15), 0 0 80px rgba(139,92,246,0.06); }
+    .glow-amber  { box-shadow: 0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.06); }
+
+    /* ═══════ HEADER ═══════ */
+    .header-bg {
+      background:
+        radial-gradient(ellipse 90% 70% at 50% -5%, rgba(59,130,246,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 90% 110%, rgba(16,185,129,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 5% 80%, rgba(139,92,246,0.08) 0%, transparent 60%),
+        var(--bg-secondary);
+    }
+
+    /* ═══════ PHOTO RING ═══════ */
+    .photo-ring {
+      width: 170px; height: 170px;
+      border-radius: 50%;
+      position: relative; flex-shrink: 0;
+    }
+    .photo-ring::before {
+      content: '';
+      position: absolute; inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--royal), var(--emerald), var(--purple), var(--royal));
+      z-index: -1;
+      animation: spinRing 5s linear infinite;
+    }
+    .photo-ring::after {
+      content: '';
+      position: absolute; inset: -10px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, rgba(59,130,246,0.25), rgba(16,185,129,0.12), rgba(139,92,246,0.12), rgba(59,130,246,0.25));
+      z-index: -2;
+      animation: spinRing 9s linear infinite reverse;
+      filter: blur(8px);
+    }
+    .photo-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%; overflow: hidden;
+      background: linear-gradient(135deg, #111e3a, #0d1629);
+      border: 3px solid var(--bg-primary);
+    }
+    .photo-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    @keyframes spinRing { to { transform: rotate(360deg); } }
+
+    /* ═══════ PULSE DOT ═══════ */
+    .pulse-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--emerald-glow);
+      position: relative;
+      display: inline-block;
+    }
+    .pulse-dot::after {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      background: rgba(52,211,153,0.35);
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.9); opacity: 0; }
+    }
+
+    /* ═══════ BADGES ═══════ */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 13px; border-radius: 100px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.03em;
+    }
+    .badge-blue    { background: rgba(59,130,246,0.14); border: 1px solid rgba(59,130,246,0.35); color: var(--royal-glow); }
+    .badge-green   { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.35); color: var(--emerald-glow); }
+    .badge-amber   { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.35); color: var(--amber-glow); }
+    .badge-purple  { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3);  color: var(--purple-glow); }
+    .badge-red     { background: rgba(239,68,68,0.12);  border: 1px solid rgba(239,68,68,0.3);   color: #fca5a5; }
+
+    /* ═══════ SECTION LABELS ═══════ */
+    .section-label {
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--royal);
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem; color: var(--text-primary); line-height: 1.08;
+    }
+    .section-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--royal), var(--emerald));
+      border-radius: 3px; margin-top: 10px;
+    }
+
+    /* ═══════ CARDS ═══════ */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 24px rgba(59,130,246,0.1);
+    }
+
+    /* ═══════ CTA BUTTON ═══════ */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 12px;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+      position: relative; overflow: hidden;
+    }
+    .cta-btn::after {
+      content: ''; position: absolute;
+      inset: 0; background: rgba(255,255,255,0.06);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .cta-btn:hover::after { opacity: 1; }
+    .cta-primary {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: #fff; box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+    }
+    .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.55); }
+    .cta-secondary {
+      background: rgba(16,185,129,0.12);
+      border: 1.5px solid rgba(16,185,129,0.4);
+      color: var(--emerald-glow);
+    }
+    .cta-secondary:hover { background: rgba(16,185,129,0.2); transform: translateY(-2px); }
+
+    /* ═══════ TIMELINE ═══════ */
+    .timeline-line {
+      position: absolute; left: 19px; top: 44px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--royal), var(--emerald), transparent);
+    }
+    .timeline-dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(59,130,246,0.12);
+      border: 2px solid var(--royal);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 1;
+      transition: all 0.3s;
+    }
+    .timeline-dot:hover { transform: scale(1.15); box-shadow: 0 0 16px rgba(59,130,246,0.5); }
+    .timeline-dot.green {
+      background: rgba(16,185,129,0.1);
+      border-color: var(--emerald);
+    }
+    .timeline-dot.purple {
+      background: rgba(139,92,246,0.1);
+      border-color: var(--purple);
+    }
+
+    /* ═══════ SKILL BARS ═══════ */
+    .skill-bar-track {
+      height: 5px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, var(--royal), var(--emerald));
+      width: 0%;
+      transition: width 1.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ═══════ SKILL PILLS ═══════ */
+    .skill-pill {
+      padding: 7px 15px; border-radius: 100px;
+      font-size: 13px; font-weight: 500;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-secondary);
+      transition: all 0.25s; cursor: default;
+    }
+    .skill-pill:hover {
+      background: rgba(59,130,246,0.12);
+      border-color: rgba(59,130,246,0.4);
+      color: var(--royal-glow);
+      transform: translateY(-2px);
+    }
+
+    /* ═══════ CONTACT BTN ═══════ */
+    .contact-btn {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px; border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .contact-btn:hover {
+      background: rgba(59,130,246,0.1);
+      border-color: rgba(59,130,246,0.4);
+      color: var(--royal-glow);
+      transform: translateX(5px);
+    }
+
+    /* ═══════ CERT CARD ═══════ */
+    .cert-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 20px; border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .cert-card:hover {
+      border-color: var(--border-accent);
+      transform: translateX(5px);
+      background: var(--bg-card-hover);
+    }
+    .cert-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    /* ═══════ STAT NUMBER ═══════ */
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem; line-height: 1;
+      background: linear-gradient(135deg, var(--royal-glow), var(--emerald-glow));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ═══════ ANIMATED COUNTER ═══════ */
+    .counter { display: inline; }
+
+    /* ═══════ SEPARATOR ═══════ */
+    .elegant-sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.3), rgba(16,185,129,0.2), transparent);
+      margin: 0;
+    }
+
+    /* ═══════ FLOATING TAGS ═══════ */
+    .float-tag {
+      position: absolute;
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 600;
+      backdrop-filter: blur(12px);
+      animation: floatAnim 4s ease-in-out infinite;
+    }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ═══════ SCROLL REVEAL ═══════ */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+
+    /* ═══════ PRINT ═══════ */
+    @media print {
+      body { background: white; color: #111; }
+      .reveal, .reveal-left { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-grid">
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV — MINIMALISTA COM LINKS ÂNCORA
+══════════════════════════════════════════════════════════ -->
+<nav style="position:sticky;top:0;z-index:50;background:rgba(7,9,26,0.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);">
+  <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+    <span style="font-family:'DM Serif Display',serif;font-size:1rem;background:linear-gradient(135deg,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;">
+      Kamila A. C. Silva
+    </span>
+    <div class="flex items-center gap-1">
+      <!-- Links de navegação -->
+      <a href="#sobre"      style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)';this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent'">Sobre</a>
+      <a href="#experiencia" style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)';this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent'">Experiência</a>
+      <a href="#formacao"   style="font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 12px;border-radius:8px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.color='var(--royal-glow)';this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent'" class="hidden sm:inline-flex">Formação</a>
+      <a href="#contato"    class="cta-btn cta-primary" style="padding:7px 16px;font-size:12px;margin-left:6px;">
+        <i data-lucide="send" style="width:13px;height:13px;"></i> Contato
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════════ -->
+<header class="header-bg relative overflow-hidden">
+
+  <!-- Orbs decorativos -->
+  <div style="position:absolute;left:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,0.14) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;right:-60px;bottom:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;left:40%;top:60%;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,0.07) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div class="max-w-5xl mx-auto px-6 py-16 md:py-24 relative z-10">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+
+      <!-- ╔═══════════════════════════════════════╗ -->
+      <!-- ║  FOTO — apontando para foto.jpg       ║ -->
+      <!-- ╚═══════════════════════════════════════╝ -->
+      <div class="photo-ring reveal">
+        <div class="photo-inner">
+          <!--
+            ╔══════════════════════════════════════════╗
+            ║  FOTO: arquivo foto.jpg na mesma pasta   ║
+            ║  do HTML. Para trocar, altere src abaixo ║
+            ╚══════════════════════════════════════════╝
+          -->
+          <img src="foto.jpg" alt="Kamila Aparecida do Carmo Silva" />
+        </div>
+      </div>
+
+      <!-- Texto principal -->
+      <div class="flex-1 text-center md:text-left">
+
+        <!-- Status disponível -->
+        <div class="reveal mb-4">
+          <span class="badge badge-green" style="font-size:11px;">
+            <span class="pulse-dot" style="width:7px;height:7px;"></span>
+            Aberta a novas oportunidades
+          </span>
+        </div>
+
+        <!-- Nome -->
+        <h1 class="reveal d1" style="font-family:'DM Serif Display',serif;font-size:clamp(2rem,5.5vw,3.7rem);line-height:1.04;letter-spacing:-0.025em;color:#f0f6ff;">
+          Kamila Aparecida<br/>
+          <span style="background:linear-gradient(135deg,#60a5fa 0%,#34d399 55%,#a78bfa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+            do Carmo Silva
+          </span>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="reveal d2 mt-3" style="font-size:1.1rem;font-weight:500;color:var(--text-secondary);letter-spacing:0.01em;">
+          Administradora de Empresas · Cadastro &amp; Conformidade · LGPD
+        </p>
+
+        <!-- Badges -->
+        <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-5 reveal d3">
+          <span class="badge badge-amber">
+            <i data-lucide="graduation-cap" style="width:11px;height:11px;"></i>
+            Último Período — Administração
+          </span>
+          <span class="badge badge-amber">
+            <i data-lucide="award" style="width:11px;height:11px;"></i>
+            CPA-10 (Encaminhado)
+          </span>
+          <span class="badge badge-blue">
+            <i data-lucide="shield-check" style="width:11px;height:11px;"></i>
+            Guardiã da Privacidade · LGPD
+          </span>
+          <span class="badge badge-blue">
+            <i data-lucide="building-2" style="width:11px;height:11px;"></i>
+            Sicoob Coopermec
+          </span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-7 reveal d4">
+          <a href="mailto:kamila@email.com" class="cta-btn cta-primary">
+            <i data-lucide="mail" style="width:15px;height:15px;"></i>
+            Enviar e-mail
+          </a>
+          <a href="https://linkedin.com/in/kamila-silva" target="_blank" class="cta-btn cta-secondary">
+            <i data-lucide="linkedin" style="width:15px;height:15px;"></i>
+            LinkedIn
+          </a>
+          <a href="tel:+5537999999999" class="cta-btn" style="background:rgba(139,92,246,0.1);border:1.5px solid rgba(139,92,246,0.35);color:var(--purple-glow);font-size:14px;font-weight:700;padding:12px 22px;border-radius:12px;text-decoration:none;transition:all 0.25s;" onmouseover="this.style.background='rgba(139,92,246,0.2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(139,92,246,0.1)';this.style.transform='translateY(0)'">
+            <i data-lucide="phone" style="width:15px;height:15px;"></i>
+            WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="elegant-sep"></div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     STATS RÁPIDAS
+══════════════════════════════════════════════════════════ -->
+<section style="background:var(--bg-secondary);">
+  <div class="max-w-5xl mx-auto px-6 py-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px" style="background:var(--border);border-radius:20px;overflow:hidden;">
+
+      <div class="reveal text-center py-8 px-4" style="background:var(--bg-card);">
+        <div class="stat-number">4<span style="font-size:1.8rem;">+</span></div>
+        <div style="font-size:11px;color:var(--text-muted);font-weight:700;margin-top:6px;letter-spacing:0.1em;text-transform:uppercase;">Anos de Experiência</div>
+      </div>
+
+      <div class="reveal d1 text-center py-8 px-4" style="background:var(--bg-card);">
+        <div class="stat-number">3</div>
+        <div style="font-size:11px;color:var(--text-muted);font-weight:700;margin-top:6px;letter-spacing:0.1em;text-transform:uppercase;">Áreas de Atuação</div>
+      </div>
+
+      <div class="reveal d2 text-center py-8 px-4" style="background:var(--bg-card);">
+        <div class="stat-number">4</div>
+        <div style="font-size:11px;color:var(--text-muted);font-weight:700;margin-top:6px;letter-spacing:0.1em;text-transform:uppercase;">Certificações</div>
+      </div>
+
+      <div class="reveal d3 text-center py-8 px-4" style="background:var(--bg-card);">
+        <div class="stat-number" style="font-size:2rem;">LGPD</div>
+        <div style="font-size:11px;color:var(--text-muted);font-weight:700;margin-top:6px;letter-spacing:0.1em;text-transform:uppercase;">Guardiã da Privacidade</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="elegant-sep"></div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SOBRE MIM
+══════════════════════════════════════════════════════════ -->
+<section id="sobre" class="max-w-5xl mx-auto px-6 py-20">
+
+  <div class="flex flex-col md:flex-row gap-12 items-start">
+
+    <div class="md:w-56 flex-shrink-0 reveal-left">
+      <div class="section-label">01</div>
+      <h2 class="section-title mt-1">Sobre<br/>Mim</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="flex-1">
+
+      <!-- Intro em destaque -->
+      <div class="reveal card p-6 mb-6 glow-blue" style="border-color:rgba(59,130,246,0.2);">
+        <p style="font-size:1.08rem;color:#cbd5e1;line-height:1.9;font-weight:300;">
+          Sou <strong style="color:#f0f6ff;font-weight:700;">estudante do último período de Administração de Empresas</strong>
+          e possuo uma trajetória sólida de mais de
+          <strong style="color:#60a5fa;font-weight:700;">4 anos na área administrativa e operacional</strong>,
+          com forte vivência no setor financeiro, cooperativismo de crédito e em órgãos públicos.
+        </p>
+      </div>
+
+      <div class="reveal d1" style="font-size:1.03rem;color:var(--text-secondary);line-height:1.9;font-weight:300;">
+        <p>
+          Atualmente, atuo com foco em <strong style="color:#34d399;font-weight:600;">rotinas de cadastro</strong>,
+          sendo responsável direta pela validação de dados, integridade e conformidade de informações,
+          além do gerenciamento de arquivos e organização de processos operacionais. Tenho também papel ativo como
+          <strong style="color:#a78bfa;font-weight:700;">Guardiã da Privacidade</strong> na instituição onde trabalho,
+          garantindo a aplicação prática das diretrizes da <strong style="color:#a78bfa;font-weight:600;">LGPD</strong>,
+          o sigilo e a segurança das informações sensíveis.
+        </p>
+        <p class="mt-4">
+          Minha bagagem inclui ainda passagens pela área de
+          <strong style="color:#60a5fa;font-weight:600;">Gestão de Pessoas</strong> e suporte administrativo geral,
+          o que me proporcionou uma visão sistêmica de processos, forte capacidade analítica e atenção aos detalhes.
+        </p>
+        <p class="mt-4">
+          Busco novas oportunidades de mercado onde possa aplicar minha experiência em
+          <strong style="color:#f0f6ff;font-weight:600;">controles internos, validação cadastral, segurança de dados e gestão de processos</strong>.
+          Como futura administradora, sou movida pela busca de eficiência operacional, ética e excelência na entrega de resultados —
+          pronta para contribuir e crescer junto ao time.
+        </p>
+      </div>
+
+      <!-- Cards de valores -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+        <div class="reveal d2 card p-5 text-center" style="border-color:rgba(59,130,246,0.2);">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(59,130,246,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+            <i data-lucide="search" style="width:20px;height:20px;color:#60a5fa;"></i>
+          </div>
+          <div style="font-size:14px;font-weight:700;color:#f0f6ff;">Precisão</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">Atenção total aos detalhes em cada processo</div>
+        </div>
+        <div class="reveal d3 card p-5 text-center" style="border-color:rgba(139,92,246,0.2);">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(139,92,246,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+            <i data-lucide="shield-check" style="width:20px;height:20px;color:#a78bfa;"></i>
+          </div>
+          <div style="font-size:14px;font-weight:700;color:#f0f6ff;">Conformidade</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">LGPD, KYC, normas BACEN</div>
+        </div>
+        <div class="reveal d4 card p-5 text-center" style="border-color:rgba(16,185,129,0.2);">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+            <i data-lucide="trending-up" style="width:20px;height:20px;color:#34d399;"></i>
+          </div>
+          <div style="font-size:14px;font-weight:700;color:#f0f6ff;">Crescimento</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">Aprendizado contínuo e proatividade</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     EXPERIÊNCIA PROFISSIONAL
+══════════════════════════════════════════════════════════ -->
+<section id="experiencia" class="max-w-5xl mx-auto px-6 py-20">
+
+  <div class="flex flex-col md:flex-row gap-12 items-start">
+
+    <div class="md:w-56 flex-shrink-0 reveal-left">
+      <div class="section-label">02</div>
+      <h2 class="section-title mt-1">Experi&shy;ência</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="flex-1">
+
+      <!-- Empresa: Sicoob -->
+      <div class="reveal mb-8">
+        <div class="flex items-center gap-4 mb-7">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="landmark" style="width:24px;height:24px;color:#60a5fa;"></i>
+          </div>
+          <div>
+            <div style="font-size:1.2rem;font-weight:800;color:#f0f6ff;">Sicoob Coopermec</div>
+            <div style="font-size:13px;color:var(--text-muted);">Cooperativa de Crédito · Minas Gerais · 4+ anos</div>
+          </div>
+          <span class="badge badge-blue ml-auto hidden sm:flex">Cooperativismo</span>
+        </div>
+      </div>
+
+      <div class="relative pl-14">
+        <div class="timeline-line"></div>
+
+        <!-- ── CARGO: Guardiã da Privacidade / LGPD ── -->
+        <div class="relative mb-9 reveal d1">
+          <div class="timeline-dot absolute -left-14" style="background:rgba(139,92,246,0.12);border-color:var(--purple);">
+            <i data-lucide="shield-check" style="width:16px;height:16px;color:#a78bfa;"></i>
+          </div>
+          <div class="card p-6 glow-purple" style="border-color:rgba(139,92,246,0.25);">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">Guardiã da Privacidade</div>
+                <div style="font-size:13px;color:#a78bfa;font-weight:600;margin-top:2px;">Compliance &amp; LGPD · Papel estratégico</div>
+              </div>
+              <span class="badge badge-purple" style="white-space:nowrap;">
+                <span class="pulse-dot" style="width:7px;height:7px;background:var(--purple-glow);"></span>
+                Papel Atual
+              </span>
+            </div>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#a78bfa;flex-shrink:0;margin-top:2px;"></i>
+                Responsável pela aplicação e monitoramento das diretrizes da <strong style="color:#c4b5fd;">Lei Geral de Proteção de Dados (LGPD)</strong> na instituição.
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#a78bfa;flex-shrink:0;margin-top:2px;"></i>
+                Garantia do sigilo, tratamento seguro e proteção de dados pessoais de cooperados e colaboradores.
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#a78bfa;flex-shrink:0;margin-top:2px;"></i>
+                Interface com demais áreas para disseminar a cultura de privacidade e conformidade de dados.
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="badge badge-purple" style="font-size:11px;">LGPD</span>
+              <span class="badge badge-purple" style="font-size:11px;">Proteção de Dados</span>
+              <span class="badge badge-purple" style="font-size:11px;">Compliance</span>
+              <span class="badge badge-purple" style="font-size:11px;">Segurança da Informação</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CARGO: Analista de Cadastro ── -->
+        <div class="relative mb-9 reveal d2">
+          <div class="timeline-dot absolute -left-14">
+            <i data-lucide="file-search" style="width:16px;height:16px;color:#60a5fa;"></i>
+          </div>
+          <div class="card p-6 glow-blue" style="border-color:rgba(59,130,246,0.2);">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">Analista de Cadastro</div>
+                <div style="font-size:13px;color:#60a5fa;font-weight:600;margin-top:2px;">Setor de Cadastro · Conformidade Cadastral</div>
+              </div>
+              <span class="badge badge-green" style="white-space:nowrap;">
+                <i data-lucide="clock" style="width:10px;height:10px;"></i>
+                Cargo Atual
+              </span>
+            </div>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
+                Abertura, atualização e análise de cadastros de cooperados (PF e PJ), assegurando conformidade com as normas BACEN e políticas internas.
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
+                Validação e análise de documentos com base nas diretrizes de <strong style="color:#6ee7b7;">Documentoscopia</strong>, garantindo autenticidade e integridade.
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
+                Aplicação das práticas de <em>Know Your Customer (KYC)</em> e prevenção à lavagem de dinheiro (PLD/COAF).
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
+                Controle e organização de arquivos físicos e digitais, mantendo rastreabilidade e conformidade regulatória.
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
+                Atendimento ao cooperado com foco em agilidade, clareza e resolução de pendências cadastrais.
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="badge badge-blue" style="font-size:11px;">KYC / PLD</span>
+              <span class="badge badge-blue" style="font-size:11px;">Documentoscopia</span>
+              <span class="badge badge-blue" style="font-size:11px;">Normas BACEN</span>
+              <span class="badge badge-blue" style="font-size:11px;">Cadastro PF/PJ</span>
+              <span class="badge badge-blue" style="font-size:11px;">Gestão Documental</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CARGO: RH ── -->
+        <div class="relative mb-9 reveal d3">
+          <div class="timeline-dot green absolute -left-14">
+            <i data-lucide="users" style="width:16px;height:16px;color:#34d399;"></i>
+          </div>
+          <div class="card p-6" style="border-color:rgba(16,185,129,0.15);">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">Assistente de Recursos Humanos</div>
+                <div style="font-size:13px;color:#34d399;font-weight:600;margin-top:2px;">Setor de RH · Gestão de Pessoas</div>
+              </div>
+              <span class="badge" style="background:rgba(100,116,139,0.1);border:1px solid rgba(100,116,139,0.25);color:var(--text-secondary);font-size:11px;white-space:nowrap;">
+                <i data-lucide="history" style="width:10px;height:10px;"></i>
+                Experiência Anterior
+              </span>
+            </div>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
+                Suporte nos processos de recrutamento, seleção e integração de novos colaboradores.
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
+                Controle e organização de documentação funcional (admissional, contratual e demissional).
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-secondary);">
+                <i data-lucide="check-circle-2" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
+                Apoio na gestão de benefícios, controle de ponto e comunicações internas, desenvolvendo visão sistêmica dos processos cooperativos.
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="badge badge-green" style="font-size:11px;">Recrutamento & Seleção</span>
+              <span class="badge badge-green" style="font-size:11px;">Gestão de Pessoas</span>
+              <span class="badge badge-green" style="font-size:11px;">CLT</span>
+              <span class="badge badge-green" style="font-size:11px;">Benefícios</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Órgão Público ── -->
+        <div class="relative reveal d4">
+          <div class="timeline-dot absolute -left-14" style="background:rgba(245,158,11,0.1);border-color:var(--amber);">
+            <i data-lucide="building" style="width:16px;height:16px;color:#fbbf24;"></i>
+          </div>
+          <div class="card p-6" style="border-color:rgba(245,158,11,0.15);">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">Suporte Administrativo</div>
+                <div style="font-size:13px;color:#fbbf24;font-weight:600;margin-top:2px;">Órgão Público · Administração Geral</div>
+              </div>
+              <span class="badge badge-amber" style="font-size:11px;white-space:nowrap;">
+                <i data-lucide="history" style="width:10px;height:10px;"></i>
+                Experiência Anterior
+              </span>
+            </div>
+            <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;">
+              Atuação em rotinas administrativas no setor público, desenvolvendo habilidades em gestão de documentos,
+              atendimento ao público, controle de processos e organização de arquivos, com foco em eficiência e
+              conformidade com normas institucionais.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="badge badge-amber" style="font-size:11px;">Administração Pública</span>
+              <span class="badge badge-amber" style="font-size:11px;">Gestão Documental</span>
+              <span class="badge badge-amber" style="font-size:11px;">Atendimento ao Público</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FORMAÇÃO + CERTIFICAÇÕES
+══════════════════════════════════════════════════════════ -->
+<section id="formacao" class="max-w-5xl mx-auto px-6 py-20">
+
+  <div class="flex flex-col md:flex-row gap-12 items-start">
+
+    <div class="md:w-56 flex-shrink-0 reveal-left">
+      <div class="section-label">03</div>
+      <h2 class="section-title mt-1">Formação &amp;<br/>Certif.</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="flex-1 flex flex-col gap-5">
+
+      <!-- Graduação -->
+      <div class="card p-6 reveal glow-blue" style="border-color:rgba(59,130,246,0.2);">
+        <div class="flex items-start gap-4">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="graduation-cap" style="width:24px;height:24px;color:#60a5fa;"></i>
+          </div>
+          <div class="flex-1">
+            <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">Bacharelado em Administração de Empresas</div>
+            <div style="font-size:13px;color:#60a5fa;font-weight:600;margin-top:2px;">[Nome da Instituição] · Carmo do Cajuru, MG</div>
+            <p class="mt-3" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+              Formação sólida em gestão empresarial, processos organizacionais, finanças, compliance e liderança.
+            </p>
+          </div>
+          <span class="badge badge-amber hidden sm:inline-flex" style="white-space:nowrap;">🎓 Último Período</span>
+        </div>
+      </div>
+
+      <!-- CPA-10 -->
+      <div class="card p-6 reveal d1 glow-amber" style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.03);">
+        <div class="flex items-start gap-4">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="award" style="width:24px;height:24px;color:#fbbf24;"></i>
+          </div>
+          <div class="flex-1">
+            <div style="font-size:1.05rem;font-weight:800;color:#f0f6ff;">
+              Certificação CPA-10
+              <span class="badge badge-amber ml-2" style="font-size:11px;vertical-align:middle;">⏳ Em andamento</span>
+            </div>
+            <div style="font-size:13px;color:#fbbf24;font-weight:600;margin-top:2px;">ANBIMA — Mercado Financeiro e de Capitais</div>
+            <p class="mt-3" style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+              Certificação para distribuição de produtos de investimento ao varejo. Abrange regulação, ética,
+              produtos financeiros e compliance no mercado de capitais.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rótulo: cursos e certificados -->
+      <div class="reveal d2 flex items-center gap-3 mt-2">
+        <div class="flex-1" style="height:1px;background:linear-gradient(90deg,var(--border-accent),transparent);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);">Cursos &amp; Certificados Complementares</span>
+        <div class="flex-1" style="height:1px;background:linear-gradient(90deg,transparent,var(--border-accent));"></div>
+      </div>
+
+      <!-- Encontro Estadual de Jovens Cooperativistas — SESCOOP/MG -->
+      <div class="cert-card reveal d2">
+        <div class="cert-icon" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);">
+          <i data-lucide="users-2" style="width:20px;height:20px;color:#34d399;"></i>
+        </div>
+        <div class="flex-1">
+          <div style="font-size:14px;font-weight:700;color:#f0f6ff;">Encontro Estadual de Jovens Cooperativistas de MG</div>
+          <div style="font-size:12px;color:#34d399;font-weight:600;margin-top:1px;">SESCOOP/MG — Sistema Ocemg</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">07 a 09/08/2025 · 16h · Belo Horizonte, MG</div>
+        </div>
+        <span class="badge badge-green" style="white-space:nowrap;flex-shrink:0;font-size:11px;">16h</span>
+      </div>
+
+      <!-- Documentoscopia — SESCOOP/SP -->
+      <div class="cert-card reveal d3">
+        <div class="cert-icon" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);">
+          <i data-lucide="file-scan" style="width:20px;height:20px;color:#60a5fa;"></i>
+        </div>
+        <div class="flex-1">
+          <div style="font-size:14px;font-weight:700;color:#f0f6ff;">Curso de Documentoscopia</div>
+          <div style="font-size:12px;color:#60a5fa;font-weight:600;margin-top:1px;">SESCOOP/SP — Somos Coop</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">17 a 18/07/2024 · 8h · São Paulo, SP</div>
+        </div>
+        <span class="badge badge-blue" style="white-space:nowrap;flex-shrink:0;font-size:11px;">8h</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     COMPETÊNCIAS
+══════════════════════════════════════════════════════════ -->
+<section id="competencias" class="max-w-5xl mx-auto px-6 py-20">
+
+  <div class="flex flex-col md:flex-row gap-12 items-start">
+
+    <div class="md:w-56 flex-shrink-0 reveal-left">
+      <div class="section-label">04</div>
+      <h2 class="section-title mt-1">Compe&shy;tências</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="flex-1">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Hard Skills -->
+        <div class="reveal d1">
+          <div class="flex items-center gap-2 mb-6">
+            <div style="width:28px;height:28px;border-radius:8px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;">
+              <i data-lucide="cpu" style="width:14px;height:14px;color:#60a5fa;"></i>
+            </div>
+            <span style="font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#60a5fa;">Hard Skills</span>
+          </div>
+          <div class="flex flex-col gap-5">
+            <!-- Each skill -->
+            <div>
+              <div class="flex justify-between mb-2">
+                <span style="font-size:14px;font-weight:600;color:#e2e8f0;">Gestão de Cadastros (PF/PJ)</span>
+                <span style="font-size:12px;color:var(--text-muted);">92%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-w="92"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span style="font-size:14px;font-weight:600;color:#e2e8f0;">LGPD &amp; Proteção de Dados</span>
+                <span style="font-size:12px;color:var(--text-muted);">88%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-w="88" style="background:linear-gradient(90deg,var(--purple),var(--purple-glow));"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span style="font-size:14px;font-weight:600;color:#e2e8f0;">Compliance &amp; KYC / PLD</span>
+                <span style="font-size:12px;color:var(--text-muted);">87%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-w="87"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span style="font-size:14px;font-weight:600;color:#e2e8f0;">Documentoscopia</span>
+                <span style="font-size:12px;color:var(--text-muted);">82%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-w="82"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span style="font-size:14px;font-weight:600;color:#e2e8f0;">Gestão de Pessoas (RH)</span>
+                <span style="font-size:12px;color:var(--text-muted);">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-w="80" style="background:linear-gradient(90deg,var(--emerald),var(--emerald-glow));"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span style="font-size:14px;font-weight:600;color:#e2e8f0;">Pacote Office &amp; Sistemas ERP</span>
+                <span style="font-size:12px;color:var(--text-muted);">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span style="font-size:14px;font-weight:600;color:#e2e8f0;">Normas BACEN &amp; Cooperativismo</span>
+                <span style="font-size:12px;color:var(--text-muted);">78%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-w="78" style="background:linear-gradient(90deg,var(--amber),var(--amber-glow));"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills + diferenciais -->
+        <div class="reveal d2">
+          <div class="flex items-center gap-2 mb-6">
+            <div style="width:28px;height:28px;border-radius:8px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;">
+              <i data-lucide="sparkles" style="width:14px;height:14px;color:#34d399;"></i>
+            </div>
+            <span style="font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#34d399;">Soft Skills</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill">🔍 Atenção a Detalhes</span>
+            <span class="skill-pill">📋 Organização</span>
+            <span class="skill-pill">🤝 Trabalho em Equipe</span>
+            <span class="skill-pill">🚀 Proatividade</span>
+            <span class="skill-pill">⚖️ Ética Profissional</span>
+            <span class="skill-pill">🧩 Visão Sistêmica</span>
+            <span class="skill-pill">🧠 Pensamento Analítico</span>
+            <span class="skill-pill">⏱️ Gestão do Tempo</span>
+            <span class="skill-pill">💬 Comunicação Clara</span>
+            <span class="skill-pill">🔐 Discrição &amp; Sigilo</span>
+            <span class="skill-pill">🎯 Foco em Resultados</span>
+            <span class="skill-pill">🔄 Adaptabilidade</span>
+          </div>
+
+          <!-- Diferencial em destaque -->
+          <div class="card p-5 mt-6" style="border-color:rgba(139,92,246,0.25);background:rgba(139,92,246,0.05);">
+            <div class="flex items-start gap-3">
+              <i data-lucide="zap" style="width:18px;height:18px;color:#a78bfa;flex-shrink:0;margin-top:2px;"></i>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#c4b5fd;margin-bottom:5px;">✨ Diferencial Estratégico</div>
+                <p style="font-size:13px;color:#a78bfa;line-height:1.65;">
+                  Perfil multifuncional que combina conformidade cadastral, LGPD, documentoscopia e gestão de pessoas —
+                  entregando visão integrada e controle em toda a cadeia de processos financeiros e cooperativos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     IDIOMAS
+══════════════════════════════════════════════════════════ -->
+<section id="idiomas" class="max-w-5xl mx-auto px-6 py-20">
+
+  <div class="flex flex-col md:flex-row gap-12 items-start">
+
+    <div class="md:w-56 flex-shrink-0 reveal-left">
+      <div class="section-label">05</div>
+      <h2 class="section-title mt-1">Idiomas</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="flex-1 reveal d1">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="card p-5">
+          <div class="flex items-center gap-3 mb-4">
+            <span style="font-size:28px;">🇧🇷</span>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:#f0f6ff;">Português</div>
+              <div style="font-size:12px;color:#34d399;font-weight:600;">Nativo · Fluente</div>
+            </div>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="100" style="background:linear-gradient(90deg,#34d399,#6ee7b7);"></div></div>
+        </div>
+        <div class="card p-5">
+          <div class="flex items-center gap-3 mb-4">
+            <span style="font-size:28px;">🇺🇸</span>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:#f0f6ff;">Inglês</div>
+              <!-- ↓ Altere o nível real aqui -->
+              <div style="font-size:12px;color:#60a5fa;font-weight:600;">Básico · Em desenvolvimento</div>
+            </div>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="30"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTATO
+══════════════════════════════════════════════════════════ -->
+<section id="contato" class="max-w-5xl mx-auto px-6 py-20">
+
+  <div class="flex flex-col md:flex-row gap-12 items-start">
+
+    <div class="md:w-56 flex-shrink-0 reveal-left">
+      <div class="section-label">06</div>
+      <h2 class="section-title mt-1">Contato</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="flex-1 reveal d1">
+
+      <!-- Banner CTA -->
+      <div class="card p-8 mb-7 relative overflow-hidden" style="background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.08),rgba(16,185,129,0.06));border-color:rgba(59,130,246,0.3);">
+        <!-- Texto decorativo -->
+        <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:80px;opacity:0.07;line-height:1;pointer-events:none;">🤝</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:#f0f6ff;margin-bottom:10px;line-height:1.15;">
+          Vamos conversar? <span style="color:#60a5fa;">✨</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-secondary);max-width:420px;line-height:1.75;margin-bottom:20px;">
+          Estou pronta para contribuir com times que valorizam organização, conformidade e resultado.
+          Entre em contato — responderei rapidamente!
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="mailto:kamila@email.com" class="cta-btn cta-primary">
+            <i data-lucide="mail" style="width:15px;height:15px;"></i>
+            Enviar e-mail
+          </a>
+          <a href="tel:+5537999999999" class="cta-btn cta-secondary">
+            <i data-lucide="message-circle" style="width:15px;height:15px;"></i>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Todos os links -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+        <a href="mailto:kamila@email.com" class="contact-btn">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="mail" style="width:17px;height:17px;color:#60a5fa;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">E-mail</div>
+            <!-- ↓ Substitua pelo e-mail real -->
+            <div style="font-size:13px;color:#cbd5e1;">kamila@email.com</div>
+          </div>
+        </a>
+
+        <a href="tel:+5537999999999" class="contact-btn">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="phone" style="width:17px;height:17px;color:#34d399;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Telefone / WhatsApp</div>
+            <!-- ↓ Substitua pelo número real -->
+            <div style="font-size:13px;color:#cbd5e1;">(37) 9 9999-9999</div>
+          </div>
+        </a>
+
+        <a href="https://linkedin.com/in/kamila-silva" target="_blank" class="contact-btn">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(10,102,194,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="linkedin" style="width:17px;height:17px;color:#60a5fa;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">LinkedIn</div>
+            <!-- ↓ Substitua pelo link real -->
+            <div style="font-size:13px;color:#cbd5e1;">linkedin.com/in/kamila-silva</div>
+          </div>
+        </a>
+
+        <div class="contact-btn" style="cursor:default;">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="map-pin" style="width:17px;height:17px;color:#a78bfa;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Localização</div>
+            <div style="font-size:13px;color:#cbd5e1;">Carmo do Cajuru, MG · Brasil</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer style="background:var(--bg-secondary);border-top:1px solid var(--border);">
+  <div class="max-w-5xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:#f0f6ff;">Kamila Aparecida do Carmo Silva</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Administração · Cadastro · LGPD · CPA-10</div>
+    </div>
+    <div style="font-size:12px;color:#334155;text-align:center;">Currículo atualizado em 2025 · Carmo do Cajuru, MG</div>
+    <div class="flex gap-2">
+      <a href="mailto:kamila@email.com" style="width:36px;height:36px;border-radius:9px;background:rgba(59,130,246,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(59,130,246,0.4)';this.style.background='rgba(59,130,246,0.14)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='rgba(59,130,246,0.08)'">
+        <i data-lucide="mail" style="width:14px;height:14px;color:#64748b;"></i>
+      </a>
+      <a href="https://linkedin.com/in/kamila-silva" target="_blank" style="width:36px;height:36px;border-radius:9px;background:rgba(59,130,246,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(59,130,246,0.4)';this.style.background='rgba(59,130,246,0.14)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='rgba(59,130,246,0.08)'">
+        <i data-lucide="linkedin" style="width:14px;height:14px;color:#64748b;"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════════ -->
+<script>
+  // Ícones Lucide
+  lucide.createIcons();
+
+  // ── Scroll Reveal ──────────────────────────────────────
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObs.observe(el));
+
+  // ── Skill Bars ─────────────────────────────────────────
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-bar-fill').forEach((fill, i) => {
+          const w = fill.getAttribute('data-w') || 0;
+          setTimeout(() => { fill.style.width = w + '%'; }, i * 90);
+        });
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('#competencias, #idiomas').forEach(s => barObs.observe(s));
+
+  // Fallback: animar após 1.5s se seção não encontrada
+  setTimeout(() => {
+    document.querySelectorAll('.skill-bar-fill').forEach((fill, i) => {
+      if (fill.style.width === '' || fill.style.width === '0%') {
+        const w = fill.getAttribute('data-w') || 0;
+        setTimeout(() => { fill.style.width = w + '%'; }, i * 80);
+      }
+    });
+  }, 1500);
+
+  // ── Active nav link highlight ─────────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => {
+      if (a.getAttribute('href') === '#' + current) a.style.color = 'var(--royal-glow)';
+      else if (!a.classList.contains('cta-btn')) a.style.color = 'var(--text-muted)';
+    });
+  });
+</script>
+
+</body>
+</html>
