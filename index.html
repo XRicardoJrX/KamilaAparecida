@@ -1,1212 +1,829 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kamila Aparecida do Carmo Silva — Administradora</title>
-
-  <!-- ╔══════════════════════════════════════════════════════╗ -->
-  <!-- ║         DEPENDÊNCIAS EXTERNAS VIA CDN               ║ -->
-  <!-- ╚══════════════════════════════════════════════════════╝ -->
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts: DM Serif Display + Outfit -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-  <!-- ╔══════════════════════════════════════════════════════╗ -->
-  <!-- ║         CONFIGURAÇÃO TAILWIND + CSS CUSTOM          ║ -->
-  <!-- ╚══════════════════════════════════════════════════════╝ -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy:    { DEFAULT: '#0a0f1e', 50: '#f0f4ff', 100: '#dde6ff', 200: '#c3d2ff', 300: '#9eb4ff', 400: '#758bfd', 500: '#4f63f7', 600: '#3a46ec', 700: '#2f38d8', 800: '#2830af', 900: '#262e8a', 950: '#171b4f' },
-            royal:   { DEFAULT: '#1a56db', light: '#3b82f6', glow: '#60a5fa' },
-            emerald: { DEFAULT: '#059669', light: '#10b981', glow: '#34d399' },
-            slate:   { 850: '#172033' },
-          },
-          fontFamily: {
-            display: ['"DM Serif Display"', 'Georgia', 'serif'],
-            body:    ['"Outfit"', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo Kamila Aparecida - Administradora</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
   <style>
-    /* ═══════════════════════════════════════
-       RESET & BASE
-    ═══════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg-primary:   #080d1a;
-      --bg-secondary: #0d1629;
-      --bg-card:      #111827;
-      --bg-card-hover:#141f35;
-      --border:       rgba(99,179,237,0.12);
-      --border-accent:rgba(59,130,246,0.4);
-      --royal:        #3b82f6;
-      --royal-glow:   #60a5fa;
-      --emerald:      #10b981;
-      --emerald-glow: #34d399;
-      --text-primary: #f0f6ff;
-      --text-secondary:#94a3b8;
-      --text-muted:   #64748b;
+      /* Palette */
+      --navy-dark: #0A0F1E;
+      --navy: #121A30;
+      --navy-light: #1A2644;
+      --royal: #133D8D;
+      --emerald: #10B981;
+      --emerald-dark: #0D9488;
+      --gold: #FFC75F;
+      --light: #E0E6ED;
+      --muted: #A3AFBF;
+      /* Typography */
+      --serif: 'DM Serif Display', serif;
+      --sans: 'Inter', sans-serif;
+      /* Gaps & Paddings */
+      --container-width: 1400px;
+      --header-p-y: 6rem;
+      --header-p-x: 5rem;
+      --p-y: 5rem;
+      --p-x: 5rem;
+      --gap: 2.5rem;
     }
 
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      font-family: 'Outfit', system-ui, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
-
-    /* ═══════════════════════════════════════
-       SCROLLBAR CUSTOMIZADA
-    ═══════════════════════════════════════ */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg-primary); }
-    ::-webkit-scrollbar-thumb { background: var(--royal); border-radius: 2px; }
-
-    /* ═══════════════════════════════════════
-       TIPOGRAFIA
-    ═══════════════════════════════════════ */
-    .font-display { font-family: 'DM Serif Display', Georgia, serif; }
-
-    /* ═══════════════════════════════════════
-       GRID DE FUNDO (padrão sutil)
-    ═══════════════════════════════════════ */
-    .bg-grid {
+      background-color: var(--navy-dark);
       background-image:
-        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* ═══════════════════════════════════════
-       GLOW / HALOS
-    ═══════════════════════════════════════ */
-    .glow-blue {
-      box-shadow: 0 0 40px rgba(59,130,246,0.15), 0 0 80px rgba(59,130,246,0.06);
-    }
-    .glow-emerald {
-      box-shadow: 0 0 40px rgba(16,185,129,0.15), 0 0 80px rgba(16,185,129,0.06);
-    }
-
-    /* ═══════════════════════════════════════
-       HEADER
-    ═══════════════════════════════════════ */
-    .header-bg {
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59,130,246,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(16,185,129,0.08) 0%, transparent 60%),
-        var(--bg-secondary);
-    }
-
-    /* ═══════════════════════════════════════
-       FOTO PROFISSIONAL — espaço reservado
-    ═══════════════════════════════════════ */
-    .photo-ring {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .photo-ring::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--royal), var(--emerald), var(--royal));
-      z-index: -1;
-      animation: spin 6s linear infinite;
-    }
-    .photo-ring::after {
-      content: '';
-      position: absolute;
-      inset: -8px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, rgba(59,130,246,0.3), rgba(16,185,129,0.15), rgba(59,130,246,0.3));
-      z-index: -2;
-      animation: spin 10s linear infinite reverse;
-      filter: blur(6px);
-    }
-    .photo-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      background: linear-gradient(135deg, #1a2540, #0d1629);
-      border: 3px solid var(--bg-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* PLACEHOLDER — substitua a tag <img> pelo seu arquivo de foto */
-    .photo-placeholder {
+        radial-gradient(circle at top left, rgba(19, 61, 141, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+        linear-gradient(var(--navy-dark) 90%, var(--navy)),
+        linear-gradient(to right, rgba(163, 175, 191, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(163, 175, 191, 0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      color: var(--light);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
-      font-size: 11px;
-      text-align: center;
-      padding: 8px;
+      padding: 2rem;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    /* .container {
+      width: 100%;
+      max-width: var(--container-width);
+      background-color: var(--navy);
+      border-radius: 20px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      border: 1px solid var(--navy-light);
+    } */
 
-    /* ═══════════════════════════════════════
-       BADGE / CHIP
-    ═══════════════════════════════════════ */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 12px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
+    header.hero {
+      background-color: var(--navy-dark);
+      padding: var(--header-p-y) var(--header-p-x);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      position: relative;
+      border-bottom: 2px solid;
+      border-image: linear-gradient(to right, var(--navy-dark) 0%, var(--royal) 20%, var(--emerald) 80%, var(--navy-dark) 100%) 1;
     }
-    .badge-blue {
-      background: rgba(59,130,246,0.12);
-      border: 1px solid rgba(59,130,246,0.3);
-      color: var(--royal-glow);
-    }
-    .badge-emerald {
-      background: rgba(16,185,129,0.1);
-      border: 1px solid rgba(16,185,129,0.3);
-      color: var(--emerald-glow);
-    }
-    .badge-gold {
-      background: rgba(245,158,11,0.1);
-      border: 1px solid rgba(245,158,11,0.3);
-      color: #fbbf24;
-    }
-
-    /* ═══════════════════════════════════════
-       SECTION TITLE
-    ═══════════════════════════════════════ */
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--royal);
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: var(--text-primary);
-      line-height: 1.1;
-    }
-    .section-divider {
-      width: 48px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--royal), var(--emerald));
-      border-radius: 2px;
-      margin-top: 8px;
+    
+    header.hero::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 300px;
+        height: 300px;
+        background: var(--royal);
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.2;
     }
 
-    /* ═══════════════════════════════════════
-       CARDS
-    ═══════════════════════════════════════ */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-    }
-    .card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(59,130,246,0.08);
+    .hero-info-section {
+      flex: 0 0 calc(65% - 2rem);
     }
 
-    /* ═══════════════════════════════════════
-       TIMELINE
-    ═══════════════════════════════════════ */
-    .timeline-line {
-      position: absolute;
-      left: 19px;
-      top: 40px;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--royal), var(--emerald), transparent);
+    .profile-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
     }
-    .timeline-dot {
-      width: 40px;
-      height: 40px;
+
+    .profile-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+
+    .photo-ring {
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      background: rgba(59,130,246,0.12);
-      border: 2px solid var(--royal);
+      background: conic-gradient(from 180deg at 50% 50%, var(--royal) 0%, var(--emerald) 50%, var(--royal) 100%);
+      padding: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      box-shadow: 0 0 30px rgba(19, 61, 141, 0.6);
       position: relative;
-      z-index: 1;
+      z-index: 2;
+    }
+    
+    .profile-photo-wrapper {
+        width: 100%;
+        height: 100%;
+        background-color: var(--navy-dark);
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    /* ═══════════════════════════════════════
-       SKILL BARS
-    ═══════════════════════════════════════ */
-    .skill-bar-track {
-      height: 4px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .skill-bar-fill {
+    /* ========================================================
+       CRITICAL CSS FIX FOR PROFILE PHOTO
+       ======================================================== */
+    .profile-photo {
+      width: 100%;
       height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, var(--royal), var(--emerald));
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform 1.2s cubic-bezier(0.4,0,0.2,1);
+      /* Preenche o círculo interno (100% da área do wrapper) */
+      object-fit: cover; 
+      /* Centraliza o rosto dela e o cenário */
+      object-position: center; 
+      /* Garante a forma circular */
+      border-radius: 50%; 
+      display: block;
     }
-    .skill-bar-fill.animated { transform: scaleX(1); }
+    /* ======================================================== */
 
-    /* ═══════════════════════════════════════
-       SKILL PILLS (soft skills)
-    ═══════════════════════════════════════ */
-    .skill-pill {
-      padding: 8px 16px;
-      border-radius: 100px;
+    .hero-text-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .status-badge {
       font-size: 13px;
-      font-weight: 500;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text-secondary);
-      transition: all 0.25s;
-      cursor: default;
-    }
-    .skill-pill:hover {
-      background: rgba(59,130,246,0.1);
-      border-color: rgba(59,130,246,0.35);
-      color: var(--royal-glow);
-    }
-
-    /* ═══════════════════════════════════════
-       CONTACT LINKS
-    ═══════════════════════════════════════ */
-    .contact-btn {
+      color: var(--emerald);
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 14px;
+      gap: 0.4rem;
       font-weight: 500;
-      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-    }
-    .contact-btn:hover {
-      background: rgba(59,130,246,0.1);
-      border-color: rgba(59,130,246,0.4);
-      color: var(--royal-glow);
-      transform: translateX(4px);
+      margin-bottom: 0.25rem;
     }
 
-    /* ═══════════════════════════════════════
-       SCROLL REVEAL
-    ═══════════════════════════════════════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* ═══════════════════════════════════════
-       SEPARADOR ELEGANTE
-    ═══════════════════════════════════════ */
-    .elegant-sep {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
-      margin: 0;
-    }
-
-    /* ═══════════════════════════════════════
-       NÚMERO DESTACADO (stats)
-    ═══════════════════════════════════════ */
-    .stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
+    .hero-name {
+      font-family: var(--serif);
+      font-size: 52px;
       line-height: 1;
-      background: linear-gradient(135deg, var(--royal-glow), var(--emerald-glow));
+      background: linear-gradient(to bottom, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 0.2rem;
+    }
+    
+    .hero-name span {
+        background: linear-gradient(to bottom, var(--emerald) 0%, var(--royal) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
-    /* ═══════════════════════════════════════
-       RESPONSIVO MOBILE
-    ═══════════════════════════════════════ */
-    @media (max-width: 640px) {
-      .section-title { font-size: 1.6rem; }
-      .photo-ring { width: 120px; height: 120px; }
+    .hero-titles {
+      color: var(--light);
+      font-weight: 400;
+      font-size: 17px;
+      opacity: 0.9;
     }
 
-    /* ═══════════════════════════════════════
-       PRINT
-    ═══════════════════════════════════════ */
-    @media print {
-      body { background: white; color: #111; }
-      .reveal { opacity: 1 !important; transform: none !important; }
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background-color: rgba(26, 38, 68, 0.8);
+      color: var(--light);
+      border: 1px solid var(--navy-light);
+      padding: 0.5rem 0.9rem;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.3s ease;
+    }
+    
+    .tag i {
+        font-size: 16px;
+    }
+    
+    .tag-highlight {
+        color: var(--gold);
+        border-color: var(--gold);
+        background-color: rgba(255, 199, 95, 0.1);
+    }
+    
+    .tag:hover {
+        background-color: var(--navy-light);
+        border-color: var(--muted);
+    }
+
+    .quick-contacts {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .btn i {
+        font-size: 18px;
+    }
+
+    .btn-blue {
+      background-color: var(--royal);
+      color: var(--light);
+      border: 1px solid transparent;
+    }
+    .btn-blue:hover {
+        background-color: rgba(19, 61, 141, 0.8);
+        border-color: rgba(255,255,255,0.2);
+    }
+
+    .btn-emerald {
+      background-color: var(--emerald);
+      color: #000;
+      border: 1px solid transparent;
+    }
+    
+    .btn-emerald:hover {
+        background-color: var(--emerald-dark);
+        color: var(--light);
+    }
+
+    .stats-container {
+      width: 100%;
+      background-color: var(--navy);
+      padding: 2.5rem var(--p-x);
+      display: flex;
+      justify-content: center;
+      gap: var(--gap);
+      margin-bottom: 2rem;
+      border: 1px solid var(--navy-light);
+      border-radius: 16px;
+    }
+
+    .stat-card {
+      flex: 1;
+      max-width: 280px;
+      background-color: var(--navy-light);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        border-color: var(--royal);
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      line-height: 1;
+      background: linear-gradient(to bottom, var(--emerald) 0%, var(--emerald-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    main {
+      padding: 0 var(--p-x) var(--p-y);
+      width: 100%;
+      max-width: var(--container-width);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+
+    .section {
+      background-color: var(--navy);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--navy-light);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .section-full {
+        grid-column: 1 / -1;
+    }
+    
+    .section:hover {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        border-color: rgba(163, 175, 191, 0.2);
+    }
+
+    .section-label {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--royal);
+      opacity: 0.6;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: var(--light);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60%;
+        height: 3px;
+        background: linear-gradient(to right, var(--royal), var(--emerald));
+        border-radius: 10px;
+    }
+
+    .section p {
+      color: var(--light);
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .section p strong {
+      color: var(--light);
+      font-weight: 700;
+    }
+
+    .value-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .value-card {
+      background-color: var(--navy-light);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .value-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--emerald);
+    }
+
+    .value-icon {
+      font-size: 2rem;
+      color: var(--emerald);
+      margin-bottom: 0.5rem;
+    }
+
+    .value-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--light);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 1rem;
+    }
+    
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background-color: var(--navy-light);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      top: 6px;
+      left: -9px;
+      width: 19px;
+      height: 19px;
+      background-color: var(--navy);
+      border: 3px solid var(--royal);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-item.active .timeline-marker {
+        border-color: var(--emerald);
+        background-color: var(--emerald);
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+    }
+
+    .timeline-period {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .company-logo {
+      height: 24px;
+    }
+
+    .company-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--light);
+    }
+
+    .job-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--emerald);
+      margin-bottom: 0.5rem;
+    }
+    
+    .active .job-title {
+        color: var(--emerald);
+    }
+    
+    .timeline-item:not(.active) .job-title {
+        color: var(--muted);
+        opacity: 0.9;
+    }
+
+    .responsibilities {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .responsibilities li {
+      position: relative;
+      padding-left: 1.2rem;
+      font-size: 14px;
+      color: var(--light);
+      margin-bottom: 0.4rem;
+      opacity: 0.9;
+    }
+    
+    .responsibilities li::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--muted);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 15px;
+      color: var(--light);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover {
+        color: var(--emerald);
+    }
+
+    .skill-icon {
+      font-size: 1.4rem;
+      color: var(--emerald);
+    }
+
+    .language-list {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .language-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 15px;
+      color: var(--light);
+    }
+
+    .contact-cta {
+      margin-top: 3rem;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 3rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      border-radius: 16px;
+      border: 1px solid var(--navy-light);
+    }
+    
+    .contact-cta h3 {
+        font-family: var(--serif);
+        font-size: 2rem;
+        color: var(--light);
+    }
+    
+    .contact-buttons-cta {
+        display: flex;
+        gap: 1rem;
+    }
+
+    footer {
+      width: 100%;
+      max-width: var(--container-width);
+      padding: 2rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--navy-light);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    footer a {
+        color: var(--muted);
+        text-decoration: none;
+    }
+    footer a:hover {
+        color: var(--light);
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 1024px) {
+        header.hero {
+            flex-direction: column;
+            padding: 4rem 2rem;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-info-section {
+            flex: 0 0 100%;
+            width: 100%;
+        }
+        
+        .profile-row {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .hero-name {
+            font-size: 40px;
+        }
+        
+        .tags-row, .quick-contacts {
+            justify-content: center;
+        }
+        
+        main {
+            grid-template-columns: 1fr;
+            padding: 0 2rem;
+        }
+        
+        .value-cards {
+            grid-template-columns: 1fr;
+        }
     }
   </style>
 </head>
+<body>
 
-<body class="bg-grid">
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                      HEADER                             ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<header class="header-bg relative overflow-hidden">
-
-  <!-- Orb decorativo esquerdo -->
-  <div class="absolute -left-32 -top-32 w-96 h-96 rounded-full pointer-events-none"
-       style="background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);"></div>
-
-  <!-- Orb decorativo direito -->
-  <div class="absolute -right-32 -bottom-32 w-80 h-80 rounded-full pointer-events-none"
-       style="background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);"></div>
-
-  <div class="max-w-5xl mx-auto px-6 py-16 md:py-24 relative z-10">
-    <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14">
-
-      <!-- ┌─────────────────────────────────────┐ -->
-      <!-- │  FOTO — substitua pelo seu arquivo  │ -->
-      <!-- └─────────────────────────────────────┘ -->
-      <div class="photo-ring reveal">
-        <div class="photo-inner">
-          <!--
-            ╔════════════════════════════════════════╗
-            ║  PARA ADICIONAR SUA FOTO:              ║
-            ║  Substitua o bloco abaixo por:         ║
-            ║  <img src="foto.jpg"                   ║
-            ║       alt="Kamila Aparecida"           ║
-            ║       style="width:100%;height:100%;   ║
-            ║              object-fit:cover;" />     ║
-            ╚════════════════════════════════════════╝
-          -->
-          <div class="photo-placeholder">
-            <i data-lucide="user" style="width:44px;height:44px;color:rgba(99,179,237,0.4);"></i>
-            <span style="font-size:10px;color:rgba(148,163,184,0.5);"><img src="foto.jpg"                 
-                 alt="Kamila Aparecida"           
-                   style="width:100%;height:100%;   
-                          object-fit:cover;" /> </span>
+  <header class="hero">
+    <div class="hero-info-section">
+      <div class="profile-row">
+        <div class="profile-container">
+          <div class="photo-ring">
+            <div class="profile-photo-wrapper">
+              <img src="uploaded:image_cfb802.png-d3970fa7-5729-4d39-bec7-2e50b27e5381" class="profile-photo" alt="Foto de Perfil de Kamila Aparecida">
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-text-content">
+          <div class="status-badge">
+            <i class="lucide-zap"></i>
+            <span>Disponível para oportunidades</span>
+          </div>
+          <h1 class="hero-name">Kamila Aparecida<span> do Carmo Silva</span></h1>
+          <h2 class="hero-titles">Administradora · Analista de Cadastro & RH</h2>
+          
+          <div class="tags-row">
+            <div class="tag"><i class="lucide-briefcase"></i>Administração</div>
+            <div class="tag tag-highlight"><i class="lucide-medal"></i>CPA-10 (Encaminhado)</div>
+            <div class="tag"><i class="lucide-landmark"></i>Sicoob Coopermec</div>
+            <div class="tag"><i class="lucide-calendar"></i>22 anos</div>
+          </div>
+          
+          <div class="quick-contacts">
+            <a href="mailto:kamila@email.com" class="btn btn-blue"><i class="lucide-mail"></i>Enviar E-mail</a>
+            <a href="tel:37999999999" class="btn btn-emerald"><i class="lucide-phone"></i>(37) 99999-9999</a>
           </div>
         </div>
       </div>
-
-      <!-- Texto do header -->
-      <div class="flex-1 text-center md:text-left">
-
-        <!-- Rótulo -->
-        <div class="reveal">
-          <span class="badge badge-emerald mb-4 inline-flex">
-            <i data-lucide="shield-check" style="width:12px;height:12px;"></i>
-            Disponível para oportunidades
-          </span>
-        </div>
-
-        <!-- Nome principal -->
-        <h1 class="font-display reveal reveal-delay-1"
-            style="font-size: clamp(2rem, 6vw, 3.6rem); line-height:1.05; letter-spacing:-0.02em; color:#f0f6ff;">
-          Kamila Aparecida<br />
-          <span style="background: linear-gradient(135deg, #60a5fa, #34d399); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
-            do Carmo Silva
-          </span>
-        </h1>
-
-        <!-- Título profissional -->
-        <p class="mt-3 reveal reveal-delay-2"
-           style="font-size:1.15rem; font-weight:500; color:#94a3b8; letter-spacing:0.01em;">
-          Administradora · Analista de Cadastro &amp; RH
-        </p>
-
-        <!-- Tags de destaques -->
-        <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-5 reveal reveal-delay-3">
-          <span class="badge badge-blue">
-            <i data-lucide="graduation-cap" style="width:11px;height:11px;"></i>
-            Administração
-          </span>
-          <span class="badge badge-gold">
-            <i data-lucide="award" style="width:11px;height:11px;"></i>
-            CPA-10 (Encaminhado)
-          </span>
-          <span class="badge badge-blue">
-            <i data-lucide="building-2" style="width:11px;height:11px;"></i>
-            Sicoob Coopermec
-          </span>
-          <span class="badge" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:#a78bfa;">
-            <i data-lucide="calendar" style="width:11px;height:11px;"></i>
-            22 anos
-          </span>
-        </div>
-
-        <!-- Linha de download / contato rápido -->
-        <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-7 reveal reveal-delay-4">
-          <a href="mailto:kamila@email.com"
-             class="contact-btn"
-             style="background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.35);color:#93c5fd;padding:10px 18px;font-size:13px;">
-            <i data-lucide="mail" style="width:15px;height:15px;"></i>
-            kamila@email.com
-          </a>
-          <!-- ↓ Troque pelo número real -->
-          <a href="tel:+5537999999999"
-             class="contact-btn"
-             style="background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.3);color:#6ee7b7;padding:10px 18px;font-size:13px;">
-            <i data-lucide="phone" style="width:15px;height:15px;"></i>
-            (37) 9 9999-9999
-          </a>
-        </div>
-      </div>
-
+    </div>
+  </header>
+  
+  <div class="stats-container">
+    <div class="stat-card">
+      <div class="stat-number">2+</div>
+      <div class="stat-label">Anos de Exp.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Setores Atuados</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">1</div>
+      <div class="stat-label">Certificação ANBIMA</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Dedicação</div>
     </div>
   </div>
 
-  <!-- Borda inferior gradiente -->
-  <div class="elegant-sep"></div>
-</header>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                  ESTATÍSTICAS RÁPIDAS                   ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<section style="background:var(--bg-secondary);">
-  <div class="max-w-5xl mx-auto px-6 py-10">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-px"
-         style="background:var(--border);border-radius:16px;overflow:hidden;">
-
-      <!-- Stat 1 -->
-      <div class="reveal text-center py-8 px-4"
-           style="background:var(--bg-card);">
-        <div class="stat-number">2+</div>
-        <div style="font-size:12px;color:var(--text-muted);font-weight:500;margin-top:4px;letter-spacing:0.05em;text-transform:uppercase;">Anos de Exp.</div>
+  <main>
+    <section class="section">
+        <span class="section-label">01</span>
+      <h3 class="section-title">Sobre Mim</h3>
+      <p>Sou uma profissional de <strong>Administração</strong> com 22 anos, movida pela busca constante de excelência em processos cooperativos e financeiros. Minha trajetória no <strong>Sicoob Coopermec</strong> me proporcionou vivência prática nas áreas de Recursos Humanos e Cadastro, desenvolvendo uma visão integrada do negócio cooperativo — do capital humano à regulatória.</p>
+      <p>Tenho perfil analítico, meticuloso e orientado a resultados, com forte compromisso com <strong>compliance</strong>, sigilo de dados e qualidade no atendimento do cooperado. A transição entre setores me conferiu visão ampla sobre a gestão de pessoas e o controle cadastral — habilidades essenciais no ambiente financeiro atual.</p>
+      <p>Com a certificação <strong>CPA-10 em andamento</strong>, estou ampliando meu repertório técnico para contribuir ainda mais com soluções de qualidade, integridade de informações e excelência de mal relacionamento com o exoperado.</p>
+      
+      <div class="value-cards">
+        <div class="value-card">
+            <i class="lucide-target value-icon"></i>
+            <div class="value-title">Precisão</div>
+        </div>
+        <div class="value-card">
+            <i class="lucide-shield-check value-icon"></i>
+            <div class="value-title">Integridade</div>
+        </div>
+        <div class="value-card">
+            <i class="lucide-trending-up value-icon"></i>
+            <div class="value-title">Crescimento</div>
+        </div>
       </div>
+    </section>
 
-      <!-- Stat 2 -->
-      <div class="reveal reveal-delay-1 text-center py-8 px-4"
-           style="background:var(--bg-card);">
-        <div class="stat-number">2</div>
-        <div style="font-size:12px;color:var(--text-muted);font-weight:500;margin-top:4px;letter-spacing:0.05em;text-transform:uppercase;">Setores Atuados</div>
+    <section class="section">
+        <span class="section-label">02</span>
+      <h3 class="section-title">Experiência</h3>
+      
+      <div class="timeline">
+        <div class="timeline-item active">
+          <div class="timeline-marker"></div>
+          <div class="timeline-period">Desde Fevereiro 2023</div>
+          <div class="company-header">
+            <span class="company-name">Sicoob Coopermec</span>
+            <img src="https://logodownload.org/wp-content/uploads/2017/11/sicoob-logo-0.png" class="company-logo" alt="Logo Sicoob">
+          </div>
+          <h4 class="job-title">Analista de Cadastro</h4>
+          <ul class="responsibilities">
+            <li>Execução e controle de processos de abertura e manutenção de contas (PF e PJ).</li>
+            <li>Análise rigorosa de documentação cadastral, garantindo conformidade com normas do Banco Central e políticas internas.</li>
+            <li>Monitoramento de pendências cadastrais e interface com gerências para regularização de contas.</li>
+            <li>Suporte à área comercial na validação de dados para concessão de crédito.</li>
+            <li>Gestão do sigilo de informações de cooperados (LGPD).</li>
+          </ul>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-period">Jan 2021 - Jan 2023 (2 anos)</div>
+          <div class="company-header">
+            <span class="company-name">Sicoob Coopermec</span>
+          </div>
+          <h4 class="job-title">Assistente de RH</h4>
+          <ul class="responsibilities">
+            <li>Execução de rotinas de Departamento Pessoal (férias, ponto, benefícios).</li>
+            <li>Apoio em processos de recrutamento, seleção e integração de novos colaboradores.</li>
+            <li>Gestão de documentação de pessoal e atendimento a dúvidas de colaboradores.</li>
+            <li>Apoio no controle de treinamentos e desenvolvimento.</li>
+          </ul>
+        </div>
       </div>
+    </section>
+    
+    <section class="section section-full">
+        <span class="section-label">03</span>
+        <h3 class="section-title">Formação & Certificações</h3>
+        
+        <div class="timeline">
+            <div class="timeline-item active">
+                <div class="timeline-marker"></div>
+                <div class="timeline-period">Em andamento (2024)</div>
+                <h4 class="job-title">Certificação Profissional CPA-10</h4>
+                <div class="company-header">
+                    <span class="company-name">ANBIMA</span>
+                </div>
+                <p>Ampliando conhecimentos em produtos de investimento e mal relacionamento com investidores.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-period">Concluído (2023)</div>
+                <h4 class="job-title">Graduação em Administração</h4>
+                <div class="company-header">
+                    <span class="company-name">[Nome da Instituição]</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- Stat 3 -->
-      <div class="reveal reveal-delay-2 text-center py-8 px-4"
-           style="background:var(--bg-card);">
-        <div class="stat-number">1</div>
-        <div style="font-size:12px;color:var(--text-muted);font-weight:500;margin-top:4px;letter-spacing:0.05em;text-transform:uppercase;">Certificação ANBIMA</div>
-      </div>
-
-      <!-- Stat 4 -->
-      <div class="reveal reveal-delay-3 text-center py-8 px-4"
-           style="background:var(--bg-card);">
-        <div class="stat-number">100%</div>
-        <div style="font-size:12px;color:var(--text-muted);font-weight:500;margin-top:4px;letter-spacing:0.05em;text-transform:uppercase;">Dedicação</div>
-      </div>
-
+    <section class="section">
+        <span class="section-label">04</span>
+        <h3 class="section-title">Competências</h3>
+        <div class="skill-list">
+            <div class="skill-item"><i class="lucide-brain skill-icon"></i>Análise Cadastral</div>
+            <div class="skill-item"><i class="lucide-gavel skill-icon"></i>Compliance e Normas BC</div>
+            <div class="skill-item"><i class="lucide-database skill-icon"></i>Gestão de Dados (LGPD)</div>
+            <div class="skill-item"><i class="lucide-users skill-icon"></i>Departamento Pessoal</div>
+            <div class="skill-item"><i class="lucide-headset skill-icon"></i>Atendimento ao Cooperado</div>
+            <div class="skill-item"><i class="lucide-award skill-icon"></i>CPA-10 (Em andamento)</div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <span class="section-label">05</span>
+        <h3 class="section-title">Idiomas</h3>
+        <div class="language-list">
+            <div class="language-item"><i class="lucide-globe skill-icon"></i>Português (Nativo)</div>
+            <div class="language-item"><i class="lucide-languages skill-icon"></i>Inglês (Conhecimento)</div>
+        </div>
+    </section>
+  </main>
+  
+  <div class="contact-cta">
+    <h3>Interessado no meu perfil?</h3>
+    <div class="contact-buttons-cta">
+        <a href="mailto:kamila@email.com" class="btn btn-blue"><i class="lucide-mail"></i>Enviar E-mail</a>
+        <a href="tel:37999999999" class="btn btn-emerald"><i class="lucide-phone"></i>(37) 99999-9999</a>
     </div>
   </div>
-  <div class="elegant-sep"></div>
-</section>
 
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                     SOBRE MIM                           ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<section id="sobre" class="max-w-5xl mx-auto px-6 py-20">
-
-  <div class="flex flex-col md:flex-row gap-12 items-start">
-
-    <!-- Coluna esquerda: rótulo -->
-    <div class="md:w-56 flex-shrink-0 reveal">
-      <div class="section-label">01</div>
-      <h2 class="section-title mt-1">Sobre<br/>Mim</h2>
-      <div class="section-divider mt-3"></div>
+  <footer>
+    <span>Desenvolvido por Kamila Aparecida do Carmo Silva</span>
+    <div class="footer-links">
+        <a href="https://linkedin.com/in/kamilado-carmo-silva/" target="_blank"><i class="lucide-linkedin"></i> LinkedIn</a>
+        <span style="margin: 0 0.5rem">|</span>
+        <span><i class="lucide-map-pin"></i> Cláudio, MG</span>
     </div>
-
-    <!-- Coluna direita: texto -->
-    <div class="flex-1 reveal reveal-delay-1">
-      <p style="font-size:1.08rem; color:#cbd5e1; line-height:1.85; font-weight:300;">
-        Sou uma profissional de <strong style="color:#f0f6ff;font-weight:600;">Administração</strong> com 22 anos,
-        movida pela busca constante de excelência em processos cooperativos e financeiros.
-        Minha trajetória no <strong style="color:#60a5fa;font-weight:600;">Sicoob Coopermec</strong> me proporcionou
-        vivência prática nas áreas de Recursos Humanos e Cadastro, desenvolvendo uma visão integrada
-        do negócio cooperativo — do capital humano à conformidade regulatória.
-      </p>
-      <p class="mt-4" style="font-size:1.08rem; color:#94a3b8; line-height:1.85; font-weight:300;">
-        Tenho perfil analítico, meticuloso e orientado a resultados, com forte compromisso com
-        <strong style="color:#34d399;font-weight:600;">compliance</strong>, sigilo de dados e qualidade no
-        atendimento ao cooperado. A transição entre setores me conferiu visão ampla sobre a gestão de
-        pessoas e o controle cadastral — habilidades essenciais no ambiente financeiro atual.
-      </p>
-      <p class="mt-4" style="font-size:1.08rem; color:#94a3b8; line-height:1.85; font-weight:300;">
-        Com a certificação <strong style="color:#fbbf24;font-weight:600;">CPA-10 em andamento</strong>,
-        estou ampliando meu repertório técnico para contribuir ainda mais com soluções de qualidade,
-        integridade de informações e excelência no relacionamento com o cooperado.
-      </p>
-
-      <!-- Valores pessoais -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-        <div class="card p-5 text-center">
-          <i data-lucide="target" style="width:24px;height:24px;color:#60a5fa;margin:0 auto 8px;display:block;"></i>
-          <div style="font-size:13px;font-weight:600;color:#f0f6ff;">Precisão</div>
-          <div style="font-size:12px;color:#64748b;margin-top:2px;">Atenção total aos detalhes</div>
-        </div>
-        <div class="card p-5 text-center">
-          <i data-lucide="shield" style="width:24px;height:24px;color:#34d399;margin:0 auto 8px;display:block;"></i>
-          <div style="font-size:13px;font-weight:600;color:#f0f6ff;">Integridade</div>
-          <div style="font-size:12px;color:#64748b;margin-top:2px;">Ética em cada processo</div>
-        </div>
-        <div class="card p-5 text-center">
-          <i data-lucide="trending-up" style="width:24px;height:24px;color:#a78bfa;margin:0 auto 8px;display:block;"></i>
-          <div style="font-size:13px;font-weight:600;color:#f0f6ff;">Crescimento</div>
-          <div style="font-size:12px;color:#64748b;margin-top:2px;">Aprendizado contínuo</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║               EXPERIÊNCIA PROFISSIONAL                  ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<section id="experiencia" class="max-w-5xl mx-auto px-6 py-20">
-
-  <div class="flex flex-col md:flex-row gap-12 items-start">
-
-    <!-- Coluna esquerda -->
-    <div class="md:w-56 flex-shrink-0 reveal">
-      <div class="section-label">02</div>
-      <h2 class="section-title mt-1">Experi&shy;ência</h2>
-      <div class="section-divider mt-3"></div>
-    </div>
-
-    <!-- Coluna direita: timeline -->
-    <div class="flex-1">
-
-      <!-- Empresa -->
-      <div class="reveal">
-        <!-- Cabeçalho da empresa -->
-        <div class="flex items-center gap-4 mb-8">
-          <div style="width:48px;height:48px;border-radius:12px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="landmark" style="width:22px;height:22px;color:#60a5fa;"></i>
-          </div>
-          <div>
-            <div style="font-size:1.2rem;font-weight:700;color:#f0f6ff;">Sicoob Coopermec</div>
-            <div style="font-size:13px;color:#64748b;">Cooperativa de Crédito · Minas Gerais</div>
-          </div>
-          <div class="ml-auto badge badge-blue hidden sm:flex" style="white-space:nowrap;">Cooperativa</div>
-        </div>
-      </div>
-
-      <!-- Timeline de cargos -->
-      <div class="relative pl-12">
-        <div class="timeline-line"></div>
-
-        <!-- ─── CARGO 2: Cadastro (mais recente) ─── -->
-        <div class="relative mb-10 reveal reveal-delay-1">
-          <div class="timeline-dot absolute -left-12">
-            <i data-lucide="file-search" style="width:16px;height:16px;color:#60a5fa;"></i>
-          </div>
-
-          <div class="card p-6 glow-blue">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <div>
-                <div style="font-size:1.05rem;font-weight:700;color:#f0f6ff;">Analista de Cadastro</div>
-                <div style="font-size:13px;color:#60a5fa;font-weight:500;margin-top:2px;">Setor de Cadastro</div>
-              </div>
-              <span class="badge badge-emerald" style="white-space:nowrap;">
-                <i data-lucide="clock" style="width:10px;height:10px;"></i>
-                Cargo Atual
-              </span>
-            </div>
-
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Abertura, atualização e análise de cadastros de cooperados, assegurando conformidade com as normas BACEN e políticas internas.
-              </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Verificação e validação de documentações (PF e PJ), garantindo integridade e sigilo das informações.
-              </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Aplicação de práticas de <em>Know Your Customer (KYC)</em> e prevenção à lavagem de dinheiro (PLD).
-              </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Atendimento ao cooperado com foco em clareza, agilidade e resolução de pendências cadastrais.
-              </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-                Controle e organização de arquivos físicos e digitais, mantendo rastreabilidade e conformidade regulatória.
-              </li>
-            </ul>
-
-            <!-- Tags de habilidades -->
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="badge badge-blue" style="font-size:11px;">KYC / PLD</span>
-              <span class="badge badge-blue" style="font-size:11px;">Normas BACEN</span>
-              <span class="badge badge-blue" style="font-size:11px;">Cadastro PF/PJ</span>
-              <span class="badge badge-blue" style="font-size:11px;">Compliance</span>
-              <span class="badge badge-blue" style="font-size:11px;">Gestão Documental</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── CARGO 1: RH (anterior) ─── -->
-        <div class="relative reveal reveal-delay-2">
-          <div class="timeline-dot absolute -left-12"
-               style="background:rgba(16,185,129,0.1);border-color:var(--emerald);">
-            <i data-lucide="users" style="width:16px;height:16px;color:#34d399;"></i>
-          </div>
-
-          <div class="card p-6">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <div>
-                <div style="font-size:1.05rem;font-weight:700;color:#f0f6ff;">Assistente de Recursos Humanos</div>
-                <div style="font-size:13px;color:#34d399;font-weight:500;margin-top:2px;">Setor de Recursos Humanos</div>
-              </div>
-              <span class="badge" style="background:rgba(100,116,139,0.12);border:1px solid rgba(100,116,139,0.3);color:#94a3b8;font-size:11px;white-space:nowrap;">
-                <i data-lucide="history" style="width:10px;height:10px;"></i>
-                Experiência Anterior
-              </span>
-            </div>
-
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
-                Suporte nos processos de recrutamento, seleção e integração de novos colaboradores.
-              </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
-                Controle e organização de documentação funcional (admissional, contratual e demissional).
-              </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
-                Apoio na gestão de benefícios, controle de ponto e comunicações internas.
-              </li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#94a3b8;">
-                <i data-lucide="check-circle" style="width:15px;height:15px;color:#10b981;flex-shrink:0;margin-top:2px;"></i>
-                Interface com demais setores da cooperativa, desenvolvendo visão sistêmica do negócio e trabalho em equipe multidisciplinar.
-              </li>
-            </ul>
-
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="badge badge-emerald" style="font-size:11px;">Recrutamento</span>
-              <span class="badge badge-emerald" style="font-size:11px;">Gestão de Pessoas</span>
-              <span class="badge badge-emerald" style="font-size:11px;">CLT / Legislação</span>
-              <span class="badge badge-emerald" style="font-size:11px;">Benefícios</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║             FORMAÇÃO + CERTIFICAÇÕES                    ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<section id="formacao" class="max-w-5xl mx-auto px-6 py-20">
-
-  <div class="flex flex-col md:flex-row gap-12 items-start">
-
-    <!-- Coluna esquerda -->
-    <div class="md:w-56 flex-shrink-0 reveal">
-      <div class="section-label">03</div>
-      <h2 class="section-title mt-1">Formação &amp; Cert.</h2>
-      <div class="section-divider mt-3"></div>
-    </div>
-
-    <!-- Coluna direita -->
-    <div class="flex-1 flex flex-col gap-5">
-
-      <!-- Graduação -->
-      <div class="card p-6 reveal reveal-delay-1 glow-blue">
-        <div class="flex items-start gap-4">
-          <div style="width:48px;height:48px;border-radius:12px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="graduation-cap" style="width:22px;height:22px;color:#60a5fa;"></i>
-          </div>
-          <div class="flex-1">
-            <div style="font-size:1.05rem;font-weight:700;color:#f0f6ff;">Bacharelado em Administração</div>
-            <!-- ↓ Substitua pelo nome da instituição real -->
-            <div style="font-size:14px;color:#60a5fa;font-weight:500;margin-top:2px;">Faculdade · [Nome da Instituição]</div>
-            <div style="font-size:13px;color:#64748b;margin-top:4px;">Graduada · Carmo do Cajuru, MG</div>
-            <p class="mt-3" style="font-size:13px;color:#94a3b8;line-height:1.7;">
-              Formação sólida em gestão empresarial, finanças, marketing e comportamento organizacional,
-              com foco em processos, tomada de decisão e liderança.
-            </p>
-          </div>
-          <span class="badge badge-blue hidden sm:inline-flex" style="white-space:nowrap;">Concluído</span>
-        </div>
-      </div>
-
-      <!-- CPA-10 -->
-      <div class="card p-6 reveal reveal-delay-2"
-           style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.04);">
-        <div class="flex items-start gap-4">
-          <div style="width:48px;height:48px;border-radius:12px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="award" style="width:22px;height:22px;color:#fbbf24;"></i>
-          </div>
-          <div class="flex-1">
-            <div style="font-size:1.05rem;font-weight:700;color:#f0f6ff;">
-              Certificação CPA-10
-              <span class="badge badge-gold ml-2" style="font-size:11px;vertical-align:middle;">
-                <i data-lucide="loader" style="width:10px;height:10px;"></i>
-                Em andamento
-              </span>
-            </div>
-            <div style="font-size:14px;color:#fbbf24;font-weight:500;margin-top:2px;">ANBIMA — Associação Brasileira das Entidades dos Mercados Financeiro e de Capitais</div>
-            <p class="mt-3" style="font-size:13px;color:#94a3b8;line-height:1.7;">
-              Certificação para profissionais que atuam na distribuição de produtos de investimento junto ao público de varejo.
-              Aprofundamento em regulação, produtos financeiros, ética e compliance no mercado de capitais.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                    COMPETÊNCIAS                         ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<section id="competencias" class="max-w-5xl mx-auto px-6 py-20">
-
-  <div class="flex flex-col md:flex-row gap-12 items-start">
-
-    <!-- Coluna esquerda -->
-    <div class="md:w-56 flex-shrink-0 reveal">
-      <div class="section-label">04</div>
-      <h2 class="section-title mt-1">Compe&shy;tências</h2>
-      <div class="section-divider mt-3"></div>
-    </div>
-
-    <!-- Coluna direita -->
-    <div class="flex-1">
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-        <!-- Hard Skills -->
-        <div class="reveal reveal-delay-1">
-          <div class="flex items-center gap-2 mb-6">
-            <i data-lucide="cpu" style="width:16px;height:16px;color:#60a5fa;"></i>
-            <span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#60a5fa;">Hard Skills</span>
-          </div>
-
-          <div class="flex flex-col gap-5">
-
-            <!-- Skill Item -->
-            <div class="skill-item">
-              <div class="flex justify-between mb-2">
-                <span style="font-size:14px;font-weight:500;color:#e2e8f0;">Gestão de Cadastros Bancários</span>
-                <span style="font-size:12px;color:#64748b;">90%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--target: 0.90;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="flex justify-between mb-2">
-                <span style="font-size:14px;font-weight:500;color:#e2e8f0;">Compliance &amp; KYC / PLD</span>
-                <span style="font-size:12px;color:#64748b;">85%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--target: 0.85;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="flex justify-between mb-2">
-                <span style="font-size:14px;font-weight:500;color:#e2e8f0;">Gestão de Pessoas (RH)</span>
-                <span style="font-size:12px;color:#64748b;">80%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--target: 0.80;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="flex justify-between mb-2">
-                <span style="font-size:14px;font-weight:500;color:#e2e8f0;">Pacote Office (Excel, Word)</span>
-                <span style="font-size:12px;color:#64748b;">80%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--target: 0.80;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="flex justify-between mb-2">
-                <span style="font-size:14px;font-weight:500;color:#e2e8f0;">Normas BACEN &amp; Cooperativismo</span>
-                <span style="font-size:12px;color:#64748b;">75%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--target: 0.75;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="flex justify-between mb-2">
-                <span style="font-size:14px;font-weight:500;color:#e2e8f0;">Análise Documental (PF/PJ)</span>
-                <span style="font-size:12px;color:#64748b;">88%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--target: 0.88;"></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Soft Skills -->
-        <div class="reveal reveal-delay-2">
-          <div class="flex items-center gap-2 mb-6">
-            <i data-lucide="sparkles" style="width:16px;height:16px;color:#34d399;"></i>
-            <span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#34d399;">Soft Skills</span>
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            <span class="skill-pill">
-              <i data-lucide="search" style="width:13px;height:13px;display:inline;margin-right:4px;"></i>
-              Atenção a Detalhes
-            </span>
-            <span class="skill-pill">Organização</span>
-            <span class="skill-pill">Comunicação Clara</span>
-            <span class="skill-pill">Trabalho em Equipe</span>
-            <span class="skill-pill">Proatividade</span>
-            <span class="skill-pill">Ética Profissional</span>
-            <span class="skill-pill">Gestão do Tempo</span>
-            <span class="skill-pill">Adaptabilidade</span>
-            <span class="skill-pill">Empatia</span>
-            <span class="skill-pill">Pensamento Analítico</span>
-            <span class="skill-pill">Discrição</span>
-            <span class="skill-pill">Responsabilidade</span>
-          </div>
-
-          <!-- Diferencial -->
-          <div class="card p-5 mt-6"
-               style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.04);">
-            <div class="flex items-start gap-3">
-              <i data-lucide="lightbulb" style="width:18px;height:18px;color:#34d399;flex-shrink:0;margin-top:2px;"></i>
-              <div>
-                <div style="font-size:13px;font-weight:600;color:#a7f3d0;margin-bottom:4px;">Diferencial de Carreira</div>
-                <p style="font-size:13px;color:#6ee7b7;line-height:1.6;">
-                  Experiência multissetorial (RH → Cadastro) em cooperativa de crédito, conferindo visão holística dos processos e domínio das interfaces entre capital humano e conformidade financeira.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                      IDIOMAS                            ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<section id="idiomas" class="max-w-5xl mx-auto px-6 py-20">
-
-  <div class="flex flex-col md:flex-row gap-12 items-start">
-
-    <div class="md:w-56 flex-shrink-0 reveal">
-      <div class="section-label">05</div>
-      <h2 class="section-title mt-1">Idiomas</h2>
-      <div class="section-divider mt-3"></div>
-    </div>
-
-    <div class="flex-1 reveal reveal-delay-1">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-        <!-- Português -->
-        <div class="card p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <span style="font-size:24px;">🇧🇷</span>
-            <div>
-              <div style="font-size:15px;font-weight:600;color:#f0f6ff;">Português</div>
-              <div style="font-size:12px;color:#34d399;">Nativo</div>
-            </div>
-          </div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" style="--target:1.0; background: linear-gradient(90deg,#34d399,#6ee7b7);"></div>
-          </div>
-        </div>
-
-        <!-- Inglês — ajuste o nível conforme real -->
-        <div class="card p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <span style="font-size:24px;">🇺🇸</span>
-            <div>
-              <div style="font-size:15px;font-weight:600;color:#f0f6ff;">Inglês</div>
-              <!-- ↓ Altere o nível: Básico / Intermediário / Avançado / Fluente -->
-              <div style="font-size:12px;color:#60a5fa;">Básico (em desenvolvimento)</div>
-            </div>
-          </div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" style="--target:0.30;"></div>
-          </div>
-        </div>
-
-      </div>
-      <p class="mt-4" style="font-size:13px;color:#475569;">
-        <!-- ↓ Adicione ou remova idiomas conforme necessário -->
-        * Outros idiomas podem ser adicionados conforme sua experiência.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-<div class="elegant-sep max-w-5xl mx-auto px-6"></div>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                      CONTATO                            ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<section id="contato" class="max-w-5xl mx-auto px-6 py-20">
-
-  <div class="flex flex-col md:flex-row gap-12 items-start">
-
-    <div class="md:w-56 flex-shrink-0 reveal">
-      <div class="section-label">06</div>
-      <h2 class="section-title mt-1">Contato</h2>
-      <div class="section-divider mt-3"></div>
-    </div>
-
-    <div class="flex-1 reveal reveal-delay-1">
-
-      <!-- CTA banner -->
-      <div class="card p-7 mb-7 relative overflow-hidden"
-           style="background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(16,185,129,0.06)); border-color:rgba(59,130,246,0.25);">
-        <div class="absolute right-6 top-6 opacity-10" style="font-size:80px;">🤝</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#f0f6ff;margin-bottom:8px;">
-          Vamos conversar?
-        </div>
-        <p style="font-size:14px;color:#94a3b8;max-width:400px;line-height:1.7;">
-          Estou aberta a novas oportunidades no setor financeiro e cooperativo.
-          Entre em contato — responderei com agilidade!
-        </p>
-      </div>
-
-      <!-- Links de contato -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-        <!-- ↓ Substitua pelos dados reais -->
-        <a href="mailto:kamila@email.com" class="contact-btn">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(59,130,246,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="mail" style="width:16px;height:16px;color:#60a5fa;"></i>
-          </div>
-          <div>
-            <div style="font-size:11px;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">E-mail</div>
-            <div style="font-size:13px;color:#cbd5e1;">kamila@email.com</div>
-          </div>
-        </a>
-
-        <a href="tel:+5537999999999" class="contact-btn">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="phone" style="width:16px;height:16px;color:#34d399;"></i>
-          </div>
-          <div>
-            <div style="font-size:11px;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">Telefone / WhatsApp</div>
-            <div style="font-size:13px;color:#cbd5e1;">(37) 9 9999-9999</div>
-          </div>
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/kamila-silva" target="_blank" class="contact-btn">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(10,102,194,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="linkedin" style="width:16px;height:16px;color:#60a5fa;"></i>
-          </div>
-          <div>
-            <div style="font-size:11px;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">LinkedIn</div>
-            <!-- ↓ Substitua pelo seu perfil real -->
-            <div style="font-size:13px;color:#cbd5e1;">linkedin.com/in/kamila-silva</div>
-          </div>
-        </a>
-
-        <!-- Localização -->
-        <div class="contact-btn" style="cursor:default;">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i data-lucide="map-pin" style="width:16px;height:16px;color:#a78bfa;"></i>
-          </div>
-          <div>
-            <div style="font-size:11px;color:#475569;text-transform:uppercase;letter-spacing:0.08em;">Localização</div>
-            <div style="font-size:13px;color:#cbd5e1;">Carmo do Cajuru, MG — Brasil</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                      FOOTER                             ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<footer style="background:var(--bg-secondary);border-top:1px solid var(--border);">
-  <div class="max-w-5xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div>
-      <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:#f0f6ff;">Kamila Aparecida do Carmo Silva</div>
-      <div style="font-size:12px;color:#475569;margin-top:2px;">Administradora · CPA-10 em andamento</div>
-    </div>
-    <div style="font-size:12px;color:#334155;text-align:center;">
-      Currículo atualizado em 2025 · Carmo do Cajuru, MG
-    </div>
-    <div class="flex gap-3">
-      <a href="mailto:kamila@email.com"
-         style="width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-         onmouseover="this.style.borderColor='rgba(59,130,246,0.4)'"
-         onmouseout="this.style.borderColor='var(--border)'">
-        <i data-lucide="mail" style="width:14px;height:14px;color:#64748b;"></i>
-      </a>
-      <a href="https://linkedin.com/in/kamila-silva" target="_blank"
-         style="width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-         onmouseover="this.style.borderColor='rgba(59,130,246,0.4)'"
-         onmouseout="this.style.borderColor='var(--border)'">
-        <i data-lucide="linkedin" style="width:14px;height:14px;color:#64748b;"></i>
-      </a>
-    </div>
-  </div>
-</footer>
-
-
-<!-- ╔══════════════════════════════════════════════════════════╗ -->
-<!-- ║                   JAVASCRIPT                            ║ -->
-<!-- ╚══════════════════════════════════════════════════════════╝ -->
-<script>
-  // ── Inicializa ícones Lucide ──────────────────────────────
-  lucide.createIcons();
-
-  // ── Scroll Reveal ─────────────────────────────────────────
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-  // ── Skill Bars animadas ───────────────────────────────────
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const fills = entry.target.querySelectorAll('.skill-bar-fill');
-        fills.forEach((fill, i) => {
-          const target = parseFloat(fill.style.getPropertyValue('--target') || 1);
-          setTimeout(() => {
-            fill.style.width = (target * 100) + '%';
-            fill.classList.add('animated');
-          }, i * 100);
-        });
-        barObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  // Preparar as barras (largura 0 → animada ao entrar na tela)
-  document.querySelectorAll('.skill-bar-track').forEach(track => {
-    const fill = track.querySelector('.skill-bar-fill');
-    if (fill) {
-      const target = parseFloat(fill.style.getPropertyValue('--target') || 1);
-      fill.style.width = '0%';
-      barObserver.observe(track.closest('section') || track);
-    }
-  });
-
-  // ── Ativar barras manualmente ao scroll ──────────────────
-  const skillSection = document.querySelector('#competencias') || document.querySelector('#idiomas');
-  const allBarTracks = document.querySelectorAll('.skill-bar-track');
-
-  const skillBarTrigger = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        allBarTracks.forEach((track, i) => {
-          const fill = track.querySelector('.skill-bar-fill');
-          if (!fill) return;
-          const target = parseFloat(fill.style.getPropertyValue('--target') || 1);
-          setTimeout(() => {
-            fill.style.transition = 'width 1.2s cubic-bezier(0.4,0,0.2,1)';
-            fill.style.width = (target * 100) + '%';
-          }, i * 80);
-        });
-        skillBarTrigger.disconnect();
-      }
-    });
-  }, { threshold: 0.1 });
-
-  if (skillSection) skillBarTrigger.observe(skillSection);
-  else allBarTracks.forEach((track, i) => {
-    setTimeout(() => {
-      const fill = track.querySelector('.skill-bar-fill');
-      if (fill) {
-        const target = parseFloat(fill.style.getPropertyValue('--target') || 1);
-        fill.style.transition = 'width 1.2s cubic-bezier(0.4,0,0.2,1)';
-        fill.style.width = (target * 100) + '%';
-      }
-    }, 800 + i * 100);
-  });
-
-</script>
+  </footer>
 
 </body>
 </html>
